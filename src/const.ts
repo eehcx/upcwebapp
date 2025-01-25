@@ -14,3 +14,9 @@ export const navigation = [
     { name: "Admisiones", href: "/admisiones" },
     { name: "Normatividad", href: "/normatividad" }
 ];
+
+export const IS = [
+    { name: "Alumnos", href: "http://200.94.123.67/Modulos/Seguridad/Vistas/Login.aspx" },
+    { name: "Administrativos", href: "http://200.94.123.68/Modulos/Seguridad/Vistas/Login.aspx" },
+    { name: "Moodle", href: "http://200.94.123.70/" },
+]
