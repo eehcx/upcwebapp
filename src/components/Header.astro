@@ -1,19 +1,21 @@
 ---
 import Logo from '@/assets/logolema.png'
 import HeaderLink from './HeaderLink.astro'
+import { SingleMenu } from './nagivation/SingleMenu';
 import { SITE_TITLE, navigation } from '@/const'
+
 const currentPath = Astro.url.pathname;
 ---
 
 <header>
     <nav class="bg-[#f8f8f8] text-black shadow-lg">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
+            <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0">
 					<img 
 						src={Logo.src}
 						alt={SITE_TITLE}
-						class="h-10 bg-transparent"
+						class="h-14 bg-transparent"
 					/>
 				</div>
                 <div class="hidden md:block">
@@ -26,12 +28,7 @@ const currentPath = Astro.url.pathname;
                     </div>
                 </div>
                 <div class="hidden md:block">
-                    <a
-                        href="/miupc"
-                        class="px-4 py-2 text-sm font-medium bg-[#f1f1f1] text-gray-700 hover:bg-[#DC0B22] hover:text-white"
-                    >
-                        MIUPC
-                    </a>
+                    <SingleMenu client:load />
                 </div>
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="text-white hover:text-blue-300">
@@ -48,8 +45,9 @@ const currentPath = Astro.url.pathname;
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="http://">
                     
-                </a>
-                href="/miupc"
+                </a> 
+                
+                <a href="/miupc"
                 class="block px-3 py-2 rounded-md text-base font-medium bg-white text-blue-900 hover:bg-blue-100"
                 >
                     MIUPC

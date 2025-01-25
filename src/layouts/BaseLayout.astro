@@ -5,6 +5,7 @@ import '@/index.css'
 import { metadata } from '@/data/metadata';
 import Header from '@/components/Header.astro';
 import BaseHead from '@/components/BaseHead.astro';
+import TopAlert from '@/components/TopAlert.astro';
 
 // current path
 const currentPath = Astro.url.pathname;
@@ -19,6 +20,11 @@ const pageMetadata = metadata[currentPath] || {};
 		<BaseHead {...pageMetadata} />
 	</head>
 	<body>
+		<!--
+		<TopAlert>
+			Este es un mensaje importante para toda la universidad.
+		</TopAlert>
+		-->
 		<Header/>
 		<slot />
 	</body>
