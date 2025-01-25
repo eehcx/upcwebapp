@@ -1,0 +1,33 @@
+---
+import trailer from "@assets/videos/trailer.mp4";
+---
+
+<div id="container">
+	<main>
+		<div class="relative w-full h-screen overflow-hidden">
+			<video
+				autoplay
+				loop
+				muted
+				playsinline
+				class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+			>
+				<source src="trailer.mp4" type="video/mp4" />
+				Tu navegador no soporta la reproducción de videos.
+			</video>
+		
+			<!--
+			<div class="relative z-10 flex flex-col items-center justify-center w-full h-full text-center text-white">
+				<h1 class="text-4xl md:text-6xl font-bold">Bienvenido</h1>
+				<p class="mt-4 text-lg md:text-xl">Esto es una página con un video de fondo.</p>
+				<a
+					href="#"
+					class="mt-6 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-lg"
+				>
+					Aprende más
+				</a>
+			</div>
+			-->
+		</div>
+	</main>
+</div>

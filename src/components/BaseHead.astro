@@ -1,0 +1,22 @@
+---
+// Global imports
+import '@/index.css'
+import { ClientRouter } from 'astro:transitions';
+// Local imports
+import { SITE_TITLE } from '@/const';
+
+const { title, description } = Astro.props;
+---
+
+<!--Global Metadata-->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="icon" type="image/svg+xml" href="/logo.png" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Primary Meta Tags -->
+<title>{title ? `${title} | ${SITE_TITLE}` : SITE_TITLE}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<ClientRouter />

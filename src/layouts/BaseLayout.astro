@@ -1,0 +1,25 @@
+---
+// Global imports
+import '@/index.css'
+// Local imports
+import { metadata } from '@/data/metadata';
+import Header from '@/components/Header.astro';
+import BaseHead from '@/components/BaseHead.astro';
+
+// current path
+const currentPath = Astro.url.pathname;
+
+// metadat
+const pageMetadata = metadata[currentPath] || {};
+---
+
+<!doctype html>
+<html lang="es-MX">
+	<head>
+		<BaseHead {...pageMetadata} />
+	</head>
+	<body>
+		<Header/>
+		<slot />
+	</body>
+</html>
