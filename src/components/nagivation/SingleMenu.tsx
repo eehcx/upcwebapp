@@ -11,8 +11,8 @@ export function SingleMenu() {
                 </MenubarTrigger>
                 <MenubarContent className="rounded-none">
                     {IS.map((item, idx) => (
-                        <a key={idx} href={item.href} >
-                            <MenubarItem className="rounded-none flex items-center gap-x-2">
+                        <a key={idx} href={item.href} target="_blank" rel="noopener noreferrer" >
+                            <MenubarItem className="rounded-none cursor-pointer flex items-center gap-x-2">
                                 {item.name}
                             </MenubarItem>
                             <MenubarSeparator />
