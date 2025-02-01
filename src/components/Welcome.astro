@@ -1,8 +1,16 @@
 ---
-import trailer from "@assets/videos/trailer.mp4";
+
+export const Slider = [
+    { src: "/src/assets/images/blog-1.jpg" },
+    { src: "/src/assets/images/blog-2.jpg" },
+    { src: "/src/assets/images/blog-3.jpg" },
+    { src: "/src/assets/images/blog-4.jpg" },
+    { src: "/src/assets/images/blog-5.jpg" },
+    { src: "/src/assets/images/blog-6.jpg" }
+];
 ---
 
-<div id="container">
+<div>
 	<main>
 		<div class="relative w-full h-screen overflow-hidden">
 			<video
@@ -13,7 +21,7 @@ import trailer from "@assets/videos/trailer.mp4";
 				class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
 			>
 				<source src="trailer.mp4" type="video/mp4" />
-				Tu navegador no soporta la reproducción de videos.
+					Tu navegador no soporta la reproducción de videos.
 			</video>
 		
 			<!--
@@ -29,5 +37,31 @@ import trailer from "@assets/videos/trailer.mp4";
 			</div>
 			-->
 		</div>
+
+		<section class=" bg-[#f1f1f1] h-screen w-full shadow-md">
+			<div class="flex items-center justify-center">
+				<div class="bg-red-800 h-40 w-52 hover:cursor-pointer items-center">
+					<img src="/src/assets/images/blog-1.jpg" alt="" srcset="">
+				</div>
+				<div class="bg-red-700 h-40 w-52 hover:cursor-pointer  items-center">
+					<img src="/src/assets/images/blog-2.jpg" alt="" srcset="">
+				</div>
+				<div class="bg-red-600 h-40 w-52 hover:cursor-pointer  items-center">
+					<img src="/src/assets/images/blog-3.jpg" alt="" srcset="">
+				</div>
+				<div class="bg-red-500 h-40 w-52 hover:cursor-pointer  items-center">
+					<img src="/src/assets/images/blog-4.jpg" alt="" srcset="">
+				</div>
+				<div class="bg-red-400 h-40 w-52 hover:cursor-pointer  items-center">
+					<img src="/src/assets/images/blog-5.jpg" alt="" srcset="">
+				</div>
+				<div class="bg-red-300 h-40 w-52 hover:cursor-pointer  items-center">
+					<img src="/src/assets/images/blog-6.jpg" alt="" srcset="">
+				</div>
+				<div class="bg-red-200 h-40 w-52 hover:cursor-pointer  items-center">
+					<img src="/src/assets/images/blog-7.jpg" alt="" srcset="">
+				</div>
+			</div>
+		</section>
 	</main>
 </div>

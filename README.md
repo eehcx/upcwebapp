@@ -12,9 +12,9 @@ Para inspiración y visualización del funcionamiento de astro busca [astro them
 
 - [Tailwindcss](https://tailwindcss.com/docs/guides/astro)
 
-- [Shadcn Docs](https://ui.shadcn.com/docs/installation/astro)
+- [Shadcn UI](https://ui.shadcn.com/docs/installation/astro)
 
-- [Typography Docs](https://github.com/tailwindlabs/tailwindcss-typography)
+- [Typography](https://github.com/tailwindlabs/tailwindcss-typography)
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 

@@ -39,31 +39,7 @@ const currentPath = Astro.url.pathname;
                 </div>
             </div>
         </div>
+
         
-        <!-- Mobile menu, show/hide based on menu state -->
-        <div id="mobile-menu" class="md:hidden hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="http://">
-                    
-                </a> 
-                
-                <a href="/miupc"
-                class="block px-3 py-2 rounded-md text-base font-medium bg-white text-blue-900 hover:bg-blue-100"
-                >
-                    MIUPC
-                </a>
-            </div>
-        </div>
     </nav>
 </header>
-
-<script>
-	const mobileMenuButton = document.getElementById('mobile-menu-button');
-	const mobileMenu = document.getElementById('mobile-menu');
-
-	if (mobileMenuButton && mobileMenu) {
-		mobileMenuButton.addEventListener('click', () => {
-			mobileMenu.classList.toggle('hidden');
-		});
-	}
-</script>

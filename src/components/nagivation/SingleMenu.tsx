@@ -15,7 +15,9 @@ export function SingleMenu() {
                             <MenubarItem className="rounded-none cursor-pointer flex items-center gap-x-2">
                                 {item.name}
                             </MenubarItem>
-                            <MenubarSeparator />
+                            {
+                                <MenubarSeparator />
+                            }
                         </a>
                     ))}
                 </MenubarContent>
