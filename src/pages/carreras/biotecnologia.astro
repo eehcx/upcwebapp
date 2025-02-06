@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import bio from '@/assets/images/bio.jpg';
+---
+
+<BaseLayout>
+    <main>
+        <Image 
+            src={bio} 
+            class="select-none w-full h-full" 
+            alt="Ejemplo optimizado" 
+            draggable="false" loading="lazy" 
+        /> 
+        <section>
+
+        </section>
+    </main>
+    <section class="w-full h-screen bg-neutral-50">
+
+    </section>
+</BaseLayout>

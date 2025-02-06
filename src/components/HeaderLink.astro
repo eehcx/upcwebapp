@@ -16,8 +16,8 @@ const { href, currentPath, Name } = Astro.props;
 	class:list={[
 		"px-3 py-2 text-sm font-medium",
 		currentPath === href
-			? "bg-[#CE3C3E] text-[#fff]"
-			: "text-gray-600 hover:bg-[#ECECEC] hover:text-[#111]"
+			? "bg-[#ECECEC] text-[#111]"
+			: "text-gray-600 hover:text-[#111]"
 	]} 
 >
 	<slot />

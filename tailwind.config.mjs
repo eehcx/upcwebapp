@@ -4,6 +4,17 @@ export default {
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
     	extend: {
+			fontFamily: {
+				'Futura': ['Futura', 'sans-serif'],  
+			},
+			fontWeight: {
+				thin: 100,
+				light: 300, 
+				book: 300,
+				medium: 500,
+				bold: 700,
+				heavy: 900,
+			},
     		borderRadius: {
     			lg: 'var(--radius)',
     			md: 'calc(var(--radius) - 2px)',
@@ -75,5 +86,8 @@ export default {
     		}
     	}
     },
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require('@tailwindcss/typography'),
+		require("tailwindcss-animate")
+	],
 }

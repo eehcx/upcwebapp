@@ -1,0 +1,20 @@
+---
+import { ChevronRight } from "lucide-react";
+
+interface Props {
+    href: string;
+    title: string;
+    text: string;
+    icon?: any;
+}
+
+const { href, title, text, icon: Icon } = Astro.props as Props;
+---
+
+<p class="flex flex-row text-base">
+    <a href={href} title={title} class="no-underline text-neutral-600 hover:text-neutral-900 flex items-center">
+        {Icon && <Icon />}
+        <span class="ml-2 font-medium text-lg">{text}</span>
+        <ChevronRight className="mr-5" size={20} />
+    </a>
+</p>
