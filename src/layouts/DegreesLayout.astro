@@ -1,0 +1,42 @@
+---
+// Global imports
+import '@/index.css'
+import { ClientRouter } from 'astro:transitions';
+// Local imports
+import { SITE_TITLE } from '@/const';
+import Header from '@/components/Header.astro';
+import TopAlert from '@/components/TopAlert.astro';
+
+type Props = {
+    title: string;
+    description: string;
+};
+
+const { title, description }: Props = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-MX">
+	<head>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/logo.png" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{`${title || SITE_TITLE} | ${SITE_TITLE}`}</title>
+        <meta name="title" content={title || SITE_TITLE} />
+        <meta name="description" content={description} />
+        <!-- Open Graph meta tags -->
+        <meta property="og:title" content={title || SITE_TITLE} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={Astro.site} />
+
+        <ClientRouter />
+	</head>
+	<body class="overflow-x-hidden bg-neutral-50">
+        <TopAlert>
+			Lunes 3 de febrero, día de la Constitución Mexicana.
+		</TopAlert>
+		<Header/>
+		<slot />
+	</body>
+</html>

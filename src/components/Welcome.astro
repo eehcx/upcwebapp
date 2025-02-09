@@ -4,184 +4,242 @@ import MainCarousel from "./home/MainCarousel.tsx";
 import BlogCard from "./home/BlogCard.astro";
 import Footer from "./common/Footer.astro";
 import LinkButton from "./home/education/LinkButton.astro";
+import { getCollection } from 'astro:content';
 
 import { GalleryHorizontalEnd, Wallet, LibraryBig, Users, ChevronRight } from "lucide-react";
 
 import { Image } from "astro:assets";
-import software from '@/assets/images/software.png'
-import electronica from '@/assets/images/electronica.png'
-import mecatronica from '@/assets/images/mecatronica.png'
-import biotecnologia from '@/assets/images/biotecnologia.png'
-import geofisica from '@/assets/images/geofisica.png'
-import mecanica from '@/assets/images/mecanica.png'
+
+import cfe from '@/assets/images/convenios/cfe.png'
+import cndh from '@/assets/images/convenios/logo_cndh.png'
+import Lafayette from '@/assets/images/convenios/Lafayette.png'
+import pemex from '@/assets/images/convenios/pemex.png'
+import yumka from '@/assets/images/convenios/yumka.png'
+import telmex from '@/assets/images/convenios/telmex.png'
 
 import educacion from '@/assets/images/educacion.jpg'
 
 const images = [
-	{ src: "/src/assets/images/blog-1.jpg", alt: "" },
-	{ src: "/src/assets/images/blog-2.jpg", alt: "" },
-	{ src: "/src/assets/images/blog-3.jpg", alt: "" },
-	{ src: "/src/assets/images/blog-4.jpg", alt: "" }
+	{ src: "https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/noticias%2Fblog-1.jpg?alt=media&token=e8c9da12-0988-450c-9bca-949d50d7ce43", alt: "" },
+	{ src: "https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/noticias%2Fblog-2.jpg?alt=media&token=f8eecea2-e630-4d9b-9883-36d5f62eb1a2", alt: "" },
+	{ src: "https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/noticias%2Fblog-3.jpg?alt=media&token=607c620d-6769-4784-8c29-68fb4c076ceb", alt: "" },
+	{ src: "https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/noticias%2Fblog-4.jpg?alt=media&token=3f1a9e4a-8470-41fb-9c94-e4e325d1efd9", alt: "" }
 ];
 
-const novedades = [
-	{ src: software, alt: "Hola", href: "/carreras/software"},
-	{ src: electronica, alt: "Hola", href: "/carreras/electronica"},
-	{ src: mecatronica, alt: "Hola", href: "/carreras/mecatronica"},
-	{ src: biotecnologia, alt: "Hola", href: "/carreras/biotecnologia"},
-	{ src: geofisica, alt: "Hola", href: "/carreras/geofisica"},
-	{ src: mecanica, alt: "Hola", href: ""}
-];
+const degrees = await getCollection('degrees')
 
+export const prerender = true
 ---
 
-<div>
-	<main>
-		<MainCarousel client:load video="trailer.mp4" images={images} />
+<main class="bg-neutral-50">
+	<MainCarousel client:load video="trailer.mp4" images={images} />
 
-		<section id="carreras" class="h-full w-full bg-neutral-950"> 
-			<div class="flex items-center justify-center xl:py-6 lg:py-4 md:py-0 sm:py-0 xl:gap-6 lg:gap-6 md:gap-0 sm:gap-0"> 
-				{novedades.map((item) => ( 
-					<a href={item.href}> 
-						<Image 
-							src={item.src} 
-							class="shadow-lg select-none transition-transform duration-300 transform hover:scale-110 hover:z-10" 
-							height={184} alt="Ejemplo optimizado" 
-							draggable="false" loading="lazy" 
-						/> 
-					</a> 
-				))} 
-			</div> 
-		</section>
+	<section id="carreras" class="h-full w-full py-1" aria-label="Nuestras carreras destacadas">
+		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-1 h-full w-full">
+			{ degrees.map((item => {
+					const { slug, data } = item
+					const { title, subtitle, description, duration, modality, image } = data
 
-		<section id="educacion" class="bg-neutral-50 py-24 sm:py-32">
-			<div class="mx-auto max-w-7xl px-6 lg:px-8">
-				<div class="mx-auto pb-10 max-w-2xl lg:mx-0">
-					<h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-pretty text-neutral-900 ">Educación</h2>
+					return (
+						<a href={`carrera/${slug}`} class="relative flex justify-center w-full">
+							<div class="relative w-full">
+								<img 
+									transition:name={`img-${slug}`}
+									src={`/images/${image}`}
+									class="select-none transition-transform duration-300 transform w-full h-auto md:h-[160px] object-cover"
+									alt={title}
+									draggable="false"
+									loading="lazy"
+								>
+								<div class="absolute inset-0 bg-red-600/70 hover:bg-red-600/10 flex items-center justify-center transition-opacity duration-200 opacity-100 hover:opacity-0">
+									<h4 class="text-white text-lg font-semibold text-center px-2">{subtitle}</h4>
+								</div>
+							</div>
+						</a>
+					)
+				})).sort()
+			}
+		</div>
+	</section>
+
+	<section id="educacion" class="py-16 sm:py-20">
+		<div class="mx-auto max-w-7xl px-6 lg:px-8">
+			<div class="mx-auto pb-10 max-w-2xl lg:mx-0">
+				<h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-pretty text-neutral-900 ">Educación</h2>
+			</div>
+		</div>
+		<div class="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-9 items-center">
+			<div>
+				<Image 
+					src={educacion} 
+					height={390}
+					width={590}
+					alt="Ejemplo optimizado" 
+					draggable="false"
+					loading="lazy"
+				/>
+			</div>
+			<div class="prose">
+				<h2 class="text-5xl font-semibold text-neutral-950">Oferta educativa</h2>
+				<p class="mt-4 text-lg text-neutral-600">En la UPC formamos profesionales para el futuro, con educación técnica y humanista de alta calidad que responde a las demandas de sectores emergentes y tradicionales.</p>
+				<div class="mt-10">
+					<LinkButton 
+						href="" 
+						title="Hoy es el día" 
+						text="Admisión" 
+						icon={GalleryHorizontalEnd}	
+					/>
+					<LinkButton 
+						href="" 
+						title="Oferta educativa" 
+						text="Oferta educativa" 
+						icon={Users}	
+					/>
+					<LinkButton 
+						href="" 
+						title="Modelo educativo" 
+						text="Modelo educativo" 
+						icon={LibraryBig}	
+					/>	
+					<LinkButton 
+						href="" 
+						title="Becas" 
+						text="Becas" 
+						icon={Wallet}	
+					/>							  
 				</div>
 			</div>
-			<div class="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-9 items-center">
-                <div>
-					<Image 
-						src={educacion} 
-						height={390}
-						width={590}
-						alt="Ejemplo optimizado" 
-						draggable="false"
-						loading="lazy"
-					/>
-                </div>
-                <div class="prose">
-                    <h2 class="text-5xl font-semibold text-neutral-950">Oferta educativa</h2>
-                    <p class="mt-4 text-lg text-neutral-600">En la UPC formamos profesionales para el futuro, con educación técnica y humanista de alta calidad que responde a las demandas de sectores emergentes y tradicionales.</p>
-					<div class="mt-10">
-						<LinkButton 
-							href="" 
-							title="Hoy es el día" 
-							text="Admisión" 
-							icon={GalleryHorizontalEnd}	
-						/>
-						<LinkButton 
-							href="" 
-							title="Oferta educativa" 
-							text="Oferta educativa" 
-							icon={Users}	
-						/>
-						<LinkButton 
-							href="" 
-							title="Modelo educativo" 
-							text="Modelo educativo" 
-							icon={LibraryBig}	
-						/>	
-						<LinkButton 
-							href="" 
-							title="Becas" 
-							text="Becas" 
-							icon={Wallet}	
-						/>							  
-					</div>
-				</div>
-            </div>
+		</div>
+		<div class="mx-auto max-w-7xl px-6 lg:px-8">
 			<Separator className="mt-10" />
-		</section>
 
-		<section id="noticias" class="bg-neutral-50 pb-24 sm:pb-32">
-			<div class="mx-auto max-w-7xl px-6 lg:px-8">
-				<div class="mx-auto max-w-2xl lg:mx-0">
-					<h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-pretty text-neutral-900">Noticias</h2>
-					<p class="mt-2 prose text-lg/8 text-neutral-600">La UPC te muestra los eventos más relevantes que ocurren dentro de la Comunidad Universitaria y su entorno.</p>
-				</div>
-				<Separator className="my-10" />
-				<div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-					<BlogCard
-						date="Mar 16, 2020"
-						category="Animación y Efectos Visuales"
-						title="¡Expertos en animación en la UPC!"
-						description="Julio César Hernández Méndez y Saúl Israel Landero García imparten la conferencia: “El proceso creativo en la realización de cortometrajes animados” a estudiantes de la UPC.Los #PapillonesRojos de la carrera de Ingeniería de Animación y Efectos Visuales se preparan para la creación de cortometrajes animados."
-						authorName="Ana Karen García"
-						authorRole="Dpto. de Difusión"
-						link="#"
-					/>
-					<BlogCard
-						date="Ene 25, 2025"
-						category="Comunidad Universitaria"
-						title="¡El Guardián Papillón está de vuelta!"
-						description="Este jueves 23 de enero, estudiantes de la UPC se sumaron al día de Papillón ¡Vuelve el Guardián! organizado por la Secretaría de Cultura del Estado, este homenaje al majestuoso *Crocodylus acutus*, icono del estado de Tabasco. "
-						authorName="Josué Darío Hernández"
-						authorRole="Dpto. de Difusión"
-						link="#"
-					/>
-					<BlogCard
-						date="Ene 17, 2025"
-						category="Administración"
-						title="¡Gran Alianza!"
-						description="La Universidad Politécnica del Centro firmó un convenio de colaboración con el Centro de Interpretación con la Naturaleza YUMKA ANP para que los #PapillonesRojos puedan realizar su servicio social en esta Área Natural Protegida de Tabasco. La firma de convenio estuvo a cargo del rector de la UPC, Mtro. José Luis Cortés Peñaloza y la M.C. Ana Victoria León Mendoza. "
-						authorName="Diana Laura Hernández"
-						authorRole="Dpto. de Difusión"
-						link="#"
-					/>
-				</div>
-			</div>
-			<Separator className="mt-8" />
-		</section>
+		</div>
+	</section>
 
-		<!--
-		<section id="campus" class="flex-1 bg-neutral-100 h-screen w-full">
-			<div class="flex justify-between items-center m-5 py-5">
-				<div>
-					<h3 class="font-heavy text-3xl">CONOCE NUESTRA UNI</h3>
-					<p class="italic font-light">Dale un vistazo a la casa de papillon</p>
-				</div>
-				<div>
-					<h4 class=" font-medium">
-						EDIFICIOS
-					</h4>
-				</div>
+	<section id="noticias" >
+		<div class="mx-auto max-w-7xl px-6 lg:px-8">
+			<div class="mx-auto max-w-2xl lg:mx-0">
+				<h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-pretty text-neutral-900">Noticias</h2>
+				<p class="mt-2 prose text-lg/8 text-neutral-600">La UPC te muestra los eventos más relevantes que ocurren dentro de la Comunidad Universitaria y su entorno.</p>
 			</div>
-			<iframe 
-				src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d474.82669374314435!2d-92.92437573741519!3d17.809850429764452!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85edc500716a85a1%3A0x56bdd5ef939d1166!2sUniversidad%20Polit%C3%A9cnica%20del%20Centro!5e0!3m2!1ses!2smx!4v1738609550638!5m2!1ses!2smx" 
-				style="border:0;" 
-				allowfullscreen="" 
-				class="w-full h-80"
-				loading="lazy" 
-				referrerpolicy="no-referrer-when-downgrade"
-			>
-			</iframe>
-		</section>
-		-->
+			<Separator className="my-10" />
+			<div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+				<BlogCard
+					date="Mar 16, 2020"
+					category="Animación y Efectos Visuales"
+					title="¡Expertos en animación en la UPC!"
+					description="Julio César Hernández Méndez y Saúl Israel Landero García imparten la conferencia: “El proceso creativo en la realización de cortometrajes animados” a estudiantes de la UPC.Los #PapillonesRojos de la carrera de Ingeniería de Animación y Efectos Visuales se preparan para la creación de cortometrajes animados."
+					authorName="Ana Karen García"
+					authorRole="Dpto. de Difusión"
+					link="#"
+				/>
+				<BlogCard
+					date="Ene 25, 2025"
+					category="Comunidad Universitaria"
+					title="¡El Guardián Papillón está de vuelta!"
+					description="Este jueves 23 de enero, estudiantes de la UPC se sumaron al día de Papillón ¡Vuelve el Guardián! organizado por la Secretaría de Cultura del Estado, este homenaje al majestuoso *Crocodylus acutus*, icono del estado de Tabasco. "
+					authorName="Josué Darío Hernández"
+					authorRole="Dpto. de Difusión"
+					link="#"
+				/>
+				<BlogCard
+					date="Ene 17, 2025"
+					category="Administración"
+					title="¡Gran Alianza!"
+					description="La Universidad Politécnica del Centro firmó un convenio de colaboración con el Centro de Interpretación con la Naturaleza YUMKA ANP para que los #PapillonesRojos puedan realizar su servicio social en esta Área Natural Protegida de Tabasco. La firma de convenio estuvo a cargo del rector de la UPC, Mtro. José Luis Cortés Peñaloza y la M.C. Ana Victoria León Mendoza. "
+					authorName="Diana Laura Hernández"
+					authorRole="Dpto. de Difusión"
+					link="#"
+				/>
+			</div>
+		</div>
+		<Separator className="my-10" />
+	</section>
 
-		<section id="afiliaciones" class="bg-neutral-50 py-24 sm:py-32">
-			<div class="mx-auto max-w-7xl px-6 lg:px-8">
-				<h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-pretty text-neutral-900">Convenios</h2>
-				<div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-					<img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="https://tailwindui.com/plus/img/logos/158x48/transistor-logo-gray-900.svg" alt="Transistor" width="158" height="48">
-					<img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="https://tailwindui.com/plus/img/logos/158x48/reform-logo-gray-900.svg" alt="Reform" width="158" height="48">
-					<img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" src="https://tailwindui.com/plus/img/logos/158x48/tuple-logo-gray-900.svg" alt="Tuple" width="158" height="48">
-					<img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1" src="https://tailwindui.com/plus/img/logos/158x48/savvycal-logo-gray-900.svg" alt="SavvyCal" width="158" height="48">
-					<img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" src="https://tailwindui.com/plus/img/logos/158x48/statamic-logo-gray-900.svg" alt="Statamic" width="158" height="48">
-				</div>
+	<!--
+	<section id="campus" class="flex-1 bg-neutral-100 h-screen w-full">
+		<div class="flex justify-between items-center m-5 py-5">
+			<div>
+				<h3 class="font-heavy text-3xl">CONOCE NUESTRA UNI</h3>
+				<p class="italic font-light">Dale un vistazo a la casa de papillon</p>
 			</div>
-		</section>		  
-	</main>
-	<Footer />
-</div>
+			<div>
+				<h4 class=" font-medium">
+					EDIFICIOS
+				</h4>
+			</div>
+		</div>
+		<iframe 
+			src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d474.82669374314435!2d-92.92437573741519!3d17.809850429764452!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85edc500716a85a1%3A0x56bdd5ef939d1166!2sUniversidad%20Polit%C3%A9cnica%20del%20Centro!5e0!3m2!1ses!2smx!4v1738609550638!5m2!1ses!2smx" 
+			style="border:0;" 
+			allowfullscreen="" 
+			class="w-full h-80"
+			loading="lazy" 
+			referrerpolicy="no-referrer-when-downgrade"
+		>
+		</iframe>
+	</section>
+	-->
+
+	<section id="afiliaciones" class="pb-24 py-10 sm:pb-32">
+		<div class="mx-auto max-w-7xl px-6 lg:px-8 prose">
+			<h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-pretty text-neutral-900">Acuerdos</h2>
+			<a href="/" class="no-underline flex items-center space-x-3 text-neutral-600 hover:text-neutral-900 pb-14">
+				<span class="text-lg">Ver todos los convenios vigentes</span>
+				<ChevronRight className="mr-3" size={20} />
+			</a>
+			<div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
+				<Image 
+					src={yumka} 
+					class="col-span-2 h-12 w-full object-contain lg:col-span-1"
+					height="60"
+					alt="Ejemplo optimizado" 
+					draggable="false"
+					loading="lazy"
+				/>
+				<Image 
+					src={cndh} 
+					class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+					height="60"
+					alt="Ejemplo optimizado" 
+					draggable="false"
+					loading="lazy"
+				/>
+				<Image 
+					src={Lafayette} 
+					class="col-span-2 h-12 w-full object-contain lg:col-span-1"
+					height="60"
+					alt="Ejemplo optimizado" 
+					draggable="false"
+					loading="lazy"
+				/>
+				<Image 
+					src={pemex} 
+					class="col-span-2 h-12 w-full object-contain lg:col-span-1"
+					height="60"
+					alt="Ejemplo optimizado" 
+					draggable="false"
+					loading="lazy"
+				/>
+				<Image 
+					src={cfe} 
+					class="col-span-2 h-12 w-full object-contain lg:col-span-1"
+					height="60"
+					alt="Ejemplo optimizado" 
+					draggable="false"
+					loading="lazy"
+				/>
+				<Image 
+					src={telmex} 
+					class="col-span-2 h-12 w-full object-contain lg:col-span-1"
+					height="60"
+					alt="Ejemplo optimizado" 
+					draggable="false"
+					loading="lazy"
+				/>
+			</div>
+		</div>
+	</section>
+
+</main>
+<Footer />

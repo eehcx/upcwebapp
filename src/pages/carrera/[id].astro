@@ -1,0 +1,72 @@
+---
+import { getEntry, getCollection, render } from "astro:content";
+import DegreesLayout from "@/layouts/DegreesLayout.astro";
+import Footer from "@/components/common/Footer.astro";
+
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+
+
+export async function getStaticPaths() {
+    const degrees = await getCollection("degrees");
+
+    return degrees.map((degree) => ({
+        params: { id: degree.slug },
+        props: { degree }
+    }))
+}
+
+const { degree } = Astro.props
+const { data, slug } = degree
+const { title, subtitle, description, duration, modality, image } = data
+
+const { Content } = await render(degree);
+
+export const prerender = true;
+---
+
+<DegreesLayout title={title} description={description}>
+    <main class="w-full h-full">
+        <section class="relative w-full h-80 flex items-center justify-center text-center text-white" aria-label="Banner de la carrera">
+                <img 
+                    src={`/images/${image}`} 
+                    transition:name={`img-${slug}`}
+                    alt="Background" 
+                    class="absolute inset-0 w-full h-full object-cover"
+                />
+            
+                <div class="absolute inset-0 bg-gradient-to-b from-neutral-900/70 via-neutral-600/60 to-red-600/30"></div>
+            
+                <div class="relative z-10 flex flex-col items-start px-4 md:px-8">
+                    <h1 class="text-4xl text-neutral-100 font-semibold text-left">{subtitle}</h1>
+                    <p class="mt-4 text-lg sm:text-xl lg:text-2xl max-w-3xl text-left text-neutral-100 ">{description}</p>
+                </div>                  
+        </section> 
+        <section class="mx-auto max-w-7xl px-6 lg:px-8 py-12 sm:py-16">
+            <div class="max-w-3xl mx-auto mb-10">
+                <Breadcrumb className="sm:mx-0 md:mx-10 lg:mx-0 xl:mx-10">
+                    <BreadcrumbList>
+                    <BreadcrumbItem>
+                        <BreadcrumbLink href="/">Inicio</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                        <BreadcrumbPage>{subtitle}</BreadcrumbPage>
+                    </BreadcrumbItem>
+                    </BreadcrumbList>
+                </Breadcrumb>
+            </div>
+            
+            <div class="prose prose-xl mx-auto prose-headings:text-2xl prose-headings:text-neutral-900 prose-p:text-gray-700 prose-p:text-lg">
+                <Content />
+            </div>
+        </section>
+    </main>
+    <Footer />
+</DegreesLayout>

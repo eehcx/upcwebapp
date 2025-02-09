@@ -12,7 +12,8 @@ const { href, currentPath, Name } = Astro.props;
 
 <a 
 	href={href} 
-    transition:name={Name}
+    
+	transition:name={Name}
 	class:list={[
 		"px-3 py-2 text-sm font-medium",
 		currentPath === href

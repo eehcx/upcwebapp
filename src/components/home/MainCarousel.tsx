@@ -83,8 +83,8 @@ const MainCarousel: React.FC<Props> = ({ images, video }) => {
                     ))}
                 </CarouselContent>
 
-                <CarouselPrevious className="absolute left-4 inset-y-1/2 -translate-y-1/2 border-red-600 bg-red-600 text-white rounded-none p-5 hover:bg-red-800 hover:border-red-800 hover:text-white transition shadow-lg" />
-                <CarouselNext className="absolute right-4 inset-y-1/2 -translate-y-1/2 border-red-600 bg-red-600 text-white rounded-none p-5 hover:bg-red-800 hover:border-red-800 hover:text-white transition shadow-lg" />
+                <CarouselPrevious className="absolute left-4 inset-y-1/2 -translate-y-1/2 border-neutral-700 bg-neutral-700 text-white rounded-none p-5 hover:bg-neutral-800 hover:border-neutral-800 hover:text-white transition shadow-lg" />
+                <CarouselNext className="absolute right-4 inset-y-1/2 -translate-y-1/2 border-neutral-700 bg-neutral-700 text-white rounded-none p-5 hover:bg-neutral-800 hover:border-neutral-800 hover:text-white transition shadow-lg" />
 
             </Carousel>
 
