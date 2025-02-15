@@ -1,32 +1,20 @@
 ---
 title: Ingeniería en Biotecnología
 subtitle: Biotecnología
-description: Manejo, análisis, diseño implementación y evaluación de proyectos que requieran el uso de sistemas electrónicos y de telecomunicaciones.
+description: Diseñar, desarrollar e innovar múltiples procesos o productos que pueden ser aplicados en diversos sectores productivos y ambientales.
 duration: 3 años
 modality: Presencial
 image: biotecnologia.jpg
 ---
 
-## ¿Por qué la UPC?
+## ¿Que es la ingeniería en Biotecnología?
 
-Porque  somos  una  Universidad  joven,  dinámica  y  con  carreras  de actualidad,  con  una  planta  de  profesores  expertos  en  sus  campos  de trabajo y preocupados por la formación integral de los estudiantes.
-
-## ¿Que es la ingeniería en Software?
-
-Es una ingeniería orientada a la formación de profesionales altamente capacitados en el análisis, diseño e implementación de software de calidad. Asi mismo, se enfoca en la gestión y admisnitración del proceso de desarrollo de software permitiendo que dicho proceso tenga la mejor relación de costo-beneficio. Actualmente está considerada como una de las carreras que ofrece mejores condiciones de crecimiento profesional, sobre todo si consideramos el creciente mercado que ha tenido la región y el pais en general.
+Es el estudio interdisciplinario sobre el uso de organismos vivos o parte de ellos para proporcionar conocimientos necesarios para diseñar, desarrollar e innovar múltiples procesos o productos que pueden ser aplicados en diversos sectores productivos y ambientales, impulsando el desarrollo económico del Estado, la Región y el País.
 
 ## Perfil de ingreso
 
-El  alumno  que  desee  cursar  esta  carrera  de  ingeniería  debe  de  haber egresado del nivel medio superior preferentemente en el área de Ciencias Físico-Matemáticas;  también  es  importante  que  tenga  habilidades  de razonamiento  lógico,  creatividad  para  solución  para  de  problemas, inclinado  hacia  la  innovación  para  maximizar  el  uso  de  dispositivos electrónicos,  capacidad  de  análisis  e  interés  por  las  ciencias  de  la computación.
-
-## Cómo está integrado el Plan de Estudios?
-
-Consta de 10 cuatrimestres, organizados en tres ciclos de formación. Dos estancias  profesionales  de  120  horas  y  una  estadía  profesional  de  600 horas,  durante  las  cuales  podrás  poner  en  práctica  las  competencias desarrolladas en el aula de clases, de tal forma que se complemente tu aprendizaje. Una vez cursadas y aprobadas todas las asignaturas del plan de estudios, obtienes automáticamente tu título profesional.
-
-## Programa de formación integral
-
-El  programa  de  Formación  Integral,  tiene  la  finalidad  de  brindar  una educación  completa  que  se  trabaja  en  el  aula  y  se  refuerza  con  las actividades  deportivas  y  culturales,  creando  un  espacio  enfocado  al desarrollo integral de la persona como un ser único e irrepetible.
+Los requisitos de ingreso considerados al registrar el programa de estudio son: haber egresado del nivel medio superior y presentar el EXANII. Conciminetos básicos en áreas de formación afines a la biotecnología (preferentemente Químico-fármaco biólogos, matemáticas y/o bioprocesos). Habilidades en observación y experimentación, e interés en la obtención de productos biotecnológicos que contribuyan al desarrollo sustentable.
 
 ## Perfil de egreso
 
-Se tratará de un profesionista dotado con amplios conocimientos capaz de planear,  diseñar,  evaluar,  construir,  innovar  y  mantener  sistemas  de software de alto impacto, capaz de traer nuevas estrategias en el ámbito de  las  tecnologías  de  información,  dotado  con  una  formación  integral inclinado  hacia  todas  las  áreas  del  quehacer  humano  con  un  amplio sentido ético para ejercer la ingeniería con alta responsabilidad social.
+El Ingeniero Biotecnólogo de la Universidad Politécnica del Centro es un profesionista competente, capaz de aplicar y gestionar procesos biotecnológicos que incluyan la propagación y escalamiento de organismos de interés industrial, así como el dominio de las técnicas analíticas para el control, evaluación y seguimiento de los procesos con una sólida formación en ingeniería, además de profesionista responsable con el ambiente y el entorno social.

@@ -22,6 +22,8 @@ export async function getStaticPaths() {
     }))
 }
 
+const information = await getCollection("info");
+
 const { degree } = Astro.props
 const { data, slug } = degree
 const { title, subtitle, description, duration, modality, image } = data
@@ -57,11 +59,30 @@ export const prerender = true;
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbPage>{subtitle}</BreadcrumbPage>
+                        <BreadcrumbPage>{title}</BreadcrumbPage>
                     </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>
             </div>
+
+            { information.map((item => {
+                    const { data } = item
+                    // props: { item }
+                    const { title } = data
+                    // const { Content } = render(item);
+                    const content = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt non odit praesentium corporis similique repellendus voluptates cupiditate vero, perferendis voluptatem pariatur natus fugit quasi voluptate laborum in repellat numquam dolorum!";
+
+                    return (
+                        <article class="flex xl:mx-auto lg:mx-auto md:mx-0 sm:mx-0 border border-slate-400 bg-neutral-100 w-2/4 h-60 px-5">
+                            <div class="h-48 w-96 my-5 bg-red-600" />
+                            <div class="mx-5">
+                                <h2 class="font-semibold text-lg mt-5">{title}</h2>
+                                <p class="prose">{content}</p>
+                            </div>
+                        </article>
+                    )
+                }))
+            }
             
             <div class="prose prose-xl mx-auto prose-headings:text-2xl prose-headings:text-neutral-900 prose-p:text-gray-700 prose-p:text-lg">
                 <Content />

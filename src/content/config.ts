@@ -11,6 +11,13 @@ const degreesCollection = defineCollection({
     })
 })
 
+const infoCollection = defineCollection({
+    schema: z.object({
+        title: z.string()
+    })
+})
+
 export const collections = { 
     degrees: degreesCollection,
+    info: infoCollection,
 }
