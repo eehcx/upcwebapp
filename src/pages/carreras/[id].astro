@@ -1,7 +1,9 @@
 ---
-import { getEntry, getCollection, render } from "astro:content";
+import { getCollection, render } from "astro:content";
 import DegreesLayout from "@/layouts/DegreesLayout.astro";
 import Footer from "@/components/common/Footer.astro";
+import InformationCarousel from "@/components/degrees/InformationCarousel";
+import PDFViewer from '@/components/common/PDFViewer.astro';
 
 import {
     Breadcrumb,
@@ -11,7 +13,6 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-
 
 export async function getStaticPaths() {
     const degrees = await getCollection("degrees");
@@ -26,7 +27,7 @@ const information = await getCollection("info");
 
 const { degree } = Astro.props
 const { data, slug } = degree
-const { title, subtitle, description, duration, modality, image } = data
+const { title, subtitle, description, duration, modality, image, pdf } = data
 
 const { Content } = await render(degree);
 
@@ -50,6 +51,7 @@ export const prerender = true;
                     <p class="mt-4 text-lg sm:text-xl lg:text-2xl max-w-3xl text-left text-neutral-100 ">{description}</p>
                 </div>                  
         </section> 
+
         <section class="mx-auto max-w-7xl px-6 lg:px-8 py-12 sm:py-16">
             <div class="max-w-3xl mx-auto mb-10">
                 <Breadcrumb className="sm:mx-0 md:mx-10 lg:mx-0 xl:mx-10">
@@ -65,24 +67,15 @@ export const prerender = true;
                 </Breadcrumb>
             </div>
 
-            { information.map((item => {
-                    const { data } = item
-                    // props: { item }
-                    const { title } = data
-                    // const { Content } = render(item);
-                    const content = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt non odit praesentium corporis similique repellendus voluptates cupiditate vero, perferendis voluptatem pariatur natus fugit quasi voluptate laborum in repellat numquam dolorum!";
-
-                    return (
-                        <article class="flex xl:mx-auto lg:mx-auto md:mx-0 sm:mx-0 border border-slate-400 bg-neutral-100 w-2/4 h-60 px-5">
-                            <div class="h-48 w-96 my-5 bg-red-600" />
-                            <div class="mx-5">
-                                <h2 class="font-semibold text-lg mt-5">{title}</h2>
-                                <p class="prose">{content}</p>
-                            </div>
-                        </article>
-                    )
-                }))
-            }
+            <article class="flex flex-col lg:flex-row xl:w-[730px] lg:w-4/5 w-full bg-red-600 mx-auto mb-28 mt-16 overflow-hidden shadow-md shadow-slate-200">
+                <div class="h-48 lg:h-auto lg:w-2/5 w-full bg-red-600 relative overflow-hidden">
+                    <PDFViewer file={`/docs/${pdf}`}  />
+                </div>
+            
+                <div class="lg:w-3/5 w-full p-5">
+                    <InformationCarousel client:load items={information} />
+                </div>
+            </article>
             
             <div class="prose prose-xl mx-auto prose-headings:text-2xl prose-headings:text-neutral-900 prose-p:text-gray-700 prose-p:text-lg">
                 <Content />

@@ -5,6 +5,7 @@ description: Diseñar, desarrollar e innovar múltiples procesos o productos que
 duration: 3 años
 modality: Presencial
 image: biotecnologia.jpg
+pdf: Biotecnologia.pdf
 ---
 
 ## ¿Que es la ingeniería en Biotecnología?

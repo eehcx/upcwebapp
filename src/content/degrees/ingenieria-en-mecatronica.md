@@ -5,16 +5,17 @@ description: Optimiza procesos de producción, bien sea de forma manual, semiaut
 duration: 3 años
 modality: Presencial
 image: mecatronica.jpg
+pdf: Mecatronica.pdf
 ---
 
-## ¿Que es la ingeniería en Software?
+## ¿Que es la ingeniería en Mecatrónica?
 
-Es una ingeniería orientada a la formación de profesionales altamente capacitados en el análisis, diseño e implementación de software de calidad. Asi mismo, se enfoca en la gestión y admisnitración del proceso de desarrollo de software permitiendo que dicho proceso tenga la mejor relación de costo-beneficio. Actualmente está considerada como una de las carreras que ofrece mejores condiciones de crecimiento profesional, sobre todo si consideramos el creciente mercado que ha tenido la región y el pais en general.
+Es la profesión orientada a optimizar procesos de producción, bien sea de forma manual, semiautomática o automática. Es una ingeniería que combina actividades interdisciplinarias, entre las que se encuentran la Ingeniería Mecánica, la Ingeniería Electrónica, Sistemas Computacionales y Robótica.
 
 ## Perfil de ingreso
 
-El  alumno  que  desee  cursar  esta  carrera  de  ingeniería  debe  de  haber egresado del nivel medio superior preferentemente en el área de Ciencias Físico-Matemáticas;  también  es  importante  que  tenga  habilidades  de razonamiento  lógico,  creatividad  para  solución  para  de  problemas, inclinado  hacia  la  innovación  para  maximizar  el  uso  de  dispositivos electrónicos,  capacidad  de  análisis  e  interés  por  las  ciencias  de  la computación.
+En general los requisitos de ingreso considerados al registrar el programa de estudio son: haber egresado del nivel medio superior y presentar el EXANII. De manera interna y con base en los resultados del EXANII, se ponderan a aquellos aspirantes que cursaron áreas de formación afines preferentemente a: físico – matemáticas, TIC, mantenimiento y soporte técnico, máquinas y herramientas, etc.
 
 ## Perfil de egreso
 
-Se tratará de un profesionista dotado con amplios conocimientos capaz de planear,  diseñar,  evaluar,  construir,  innovar  y  mantener  sistemas  de software de alto impacto, capaz de traer nuevas estrategias en el ámbito de  las  tecnologías  de  información,  dotado  con  una  formación  integral inclinado  hacia  todas  las  áreas  del  quehacer  humano  con  un  amplio sentido ético para ejercer la ingeniería con alta responsabilidad social.
+Los aspectos relevantes del perfil de egreso son: formulación de soluciones de diseño, desarrollo, mantenimiento e implantación de sistemas, productos y procesos mecatrónicos, integración sinérgica de elementos mecánicos, electrónicos y de control para la automatización de equipos y procesos, el control de sistemas flexibles de manufactura y el desarrollo de nuevos dispositivos.

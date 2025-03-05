@@ -12,7 +12,18 @@ const currentPath = Astro.url.pathname;
 
 // metadata
 const pageMetadata = metadata[currentPath] || {};
+
+/*
+const fecha = new Date();
+const opciones = { weekday: 'long', day: 'numeric', month: 'long' };
+const fechaFormateada = fecha.toLocaleDateString('es-ES', opciones);
+
+// Capitalizar la primera letra
+const fechaCapitalizada = fechaFormateada.charAt(0).toUpperCase() + fechaFormateada.slice(1);
+*/
+
 ---
+
 
 <!doctype html>
 <html lang="es-MX">
@@ -21,7 +32,7 @@ const pageMetadata = metadata[currentPath] || {};
 	</head>
 	<body class="overflow-x-hidden">
 		<TopAlert>
-			Lunes 3 de febrero, día de la Constitución Mexicana.
+			⚡ Acceso anticipado. ¡Explórala mientras la mejoramos!
 		</TopAlert>
 		<Header/>
 		<slot />

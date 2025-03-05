@@ -5,6 +5,7 @@ description: Gestiona, crea y administra Software de calidad hecho a medida.
 duration: 3 años
 modality: Presencial
 image: software.jpg
+pdf: Software.pdf
 ---
 
 ## ¿Que es la ingeniería en Software?

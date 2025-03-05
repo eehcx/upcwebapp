@@ -5,16 +5,35 @@ description: Manejo, análisis, diseño implementación y evaluación de proyect
 duration: 3 años
 modality: Presencial
 image: geofisica.jpg
+pdf: Geofisica_Petrolera.pdf
 ---
 
-## ¿Que es la ingeniería en Software?
+## ¿Que es la ingeniería en Geofisica Petrolera?
 
-Es una ingeniería orientada a la formación de profesionales altamente capacitados en el análisis, diseño e implementación de software de calidad. Asi mismo, se enfoca en la gestión y admisnitración del proceso de desarrollo de software permitiendo que dicho proceso tenga la mejor relación de costo-beneficio. Actualmente está considerada como una de las carreras que ofrece mejores condiciones de crecimiento profesional, sobre todo si consideramos el creciente mercado que ha tenido la región y el pais en general.
+La Ingeniería en Geofísica Petrolera es la rama común de la Física y Geología de Exploración
+que estudia los campos físicos terrestres para investigar indirectamente el subsuelo. Esto
+con el objeto de identificar, ubicar y evaluar acumulaciones de combustibles fósiles y otros
+hidrocarburos, facilitando la explotación y aprovechamiento de éstos, procurando la
+responsabilidad ambiental y el sentido social.
 
 ## Perfil de ingreso
 
-El  alumno  que  desee  cursar  esta  carrera  de  ingeniería  debe  de  haber egresado del nivel medio superior preferentemente en el área de Ciencias Físico-Matemáticas;  también  es  importante  que  tenga  habilidades  de razonamiento  lógico,  creatividad  para  solución  para  de  problemas, inclinado  hacia  la  innovación  para  maximizar  el  uso  de  dispositivos electrónicos,  capacidad  de  análisis  e  interés  por  las  ciencias  de  la computación.
+El alumno que desee cursar una carrera de ingeniería debe de haber
+egresado del nivel medio superior preferentemente en el área de Ciencias
+Físico-Matemáticas y contar con conocimientos firmes en álgebra, cálculo
+diferencial e integral, geometría analítica y mecánica clásica; también es
+importante que tenga conocimientos generales en inglés, química,
+computación y en el área humanística. En el caso de Ingeniería Geofísica
+Petrolera, es preferible que el alumno tenga afinidad por las Ciencias de la
+Tierra con el objeto de entender y estudiar los fenómenos naturales, así
+como resolver problemas de ingeniería que derivan de éstos.
 
 ## Perfil de egreso
 
-Se tratará de un profesionista dotado con amplios conocimientos capaz de planear,  diseñar,  evaluar,  construir,  innovar  y  mantener  sistemas  de software de alto impacto, capaz de traer nuevas estrategias en el ámbito de  las  tecnologías  de  información,  dotado  con  una  formación  integral inclinado  hacia  todas  las  áreas  del  quehacer  humano  con  un  amplio sentido ético para ejercer la ingeniería con alta responsabilidad social.
+Los egresados de la carrera de Ingeniería Geofísica Petrolera contarán con
+amplios conocimientos de geología, física y matemáticas avanzadas, que
+son las bases de los diferentes métodos geofísicos de exploración que
+emplearán en su vida laboral. Especialmente, contarán con el conocimiento
+necesario para el diseño de tendidos, la adquisición, el procesamiento y la
+interpretación de datos derivados de estudios sísmicos aplicados a la
+industria de los hidrocarburos.

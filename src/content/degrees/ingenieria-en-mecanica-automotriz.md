@@ -5,16 +5,27 @@ description: Manejo, análisis, diseño implementación y evaluación de proyect
 duration: 3 años
 modality: Presencial
 image: mecanica.jpg
+pdf: Mecanica_automotriz.pdf
 ---
 
-## ¿Que es la ingeniería en Software?
+## ¿Que es la ingeniería en Mecánica Automotriz?
 
-Es una ingeniería orientada a la formación de profesionales altamente capacitados en el análisis, diseño e implementación de software de calidad. Asi mismo, se enfoca en la gestión y admisnitración del proceso de desarrollo de software permitiendo que dicho proceso tenga la mejor relación de costo-beneficio. Actualmente está considerada como una de las carreras que ofrece mejores condiciones de crecimiento profesional, sobre todo si consideramos el creciente mercado que ha tenido la región y el pais en general.
+Es la profesión orientada a diseñar elementos y sistemas mecánicos. Ofrece
+soluciones, mejoras y mantenimiento a los sectores de la industria automotriz,
+ferrocarril, médica y de servicios, entre otras; desarrolla productos innovadores y
+aplicaciones tecnológicas de vanguardia.
 
 ## Perfil de ingreso
 
-El  alumno  que  desee  cursar  esta  carrera  de  ingeniería  debe  de  haber egresado del nivel medio superior preferentemente en el área de Ciencias Físico-Matemáticas;  también  es  importante  que  tenga  habilidades  de razonamiento  lógico,  creatividad  para  solución  para  de  problemas, inclinado  hacia  la  innovación  para  maximizar  el  uso  de  dispositivos electrónicos,  capacidad  de  análisis  e  interés  por  las  ciencias  de  la computación.
+El alumno que desee cursar esta ingeniería debe de haber egresado del nivel medio superior preferentemente en el área de Ciencias Físico -Matemático también es importante que tenga conocimientos generales en inglés, química, computación y humanidades. El aspirante deberá contar con afinidad para la investigación, análisis y diseño para el desarrollo de sistemas y componentes mecánicos y automotrices.
 
 ## Perfil de egreso
 
-Se tratará de un profesionista dotado con amplios conocimientos capaz de planear,  diseñar,  evaluar,  construir,  innovar  y  mantener  sistemas  de software de alto impacto, capaz de traer nuevas estrategias en el ámbito de  las  tecnologías  de  información,  dotado  con  una  formación  integral inclinado  hacia  todas  las  áreas  del  quehacer  humano  con  un  amplio sentido ético para ejercer la ingeniería con alta responsabilidad social.
+Es un profesionista dotado con amplio s co nocimien tos disciplinare s, cap az
+de diseñ ar, desarroll ar y dirigir programa s qu e proporcione n soluciones y
+mejoras a los sectores de la industria ferroviaria, automotriz, médica y de
+servicios, entre otras; evaluar tecnologías de innovación en energías
+alternativas de componentes mecánicos y automotrices, dotado con una
+formación integral inclinado hacia todas las áreas del quehacer humano
+con un amplio sentido ético para ejercer la ingeniería con alta
+responsabilidad social.

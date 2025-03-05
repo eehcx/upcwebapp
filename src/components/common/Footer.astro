@@ -1,9 +1,6 @@
 ---
 import { Separator } from "../ui/separator";
 import Logo from "@/assets/logolema.png";
-import Social from "@/assets/buttons/social.jpg";
-import Transparencia from "@/assets/buttons/transparencia.png";
-import Patrimonio from "@/assets/buttons/patrimonio.png";
 import { navigation, SITE_TITLE } from "@/const";
 import { Image } from "astro:assets";
 ---
@@ -38,8 +35,8 @@ import { Image } from "astro:assets";
                     Email: 
                     <a
                         class="hover:text-white"
-                        href="mailto:difusion@updc.edu.mx"
-                        >difusion@updc.edu.mx</a
+                        href="mailto:informes@updc.edu.mx"
+                        >informes@updc.edu.mx</a
                     >
                 </p>
             </div>
@@ -171,10 +168,11 @@ import { Image } from "astro:assets";
             <div class="flex pt-10 space-x-3 items-center">
                 <a href="">
                     <Image
-                        src={Social}
+                        src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Fsocial.jpg?alt=media&token=205c92aa-45f0-4513-8da6-89137b293bb4"
                         class="bg-transparent rounded-md shadow-lg"
                         height={40}
-                        alt="Ejemplo optimizado"
+                        width={80}
+                        alt="Social"
                         draggable="false"
                         loading="lazy"
                     />
@@ -184,10 +182,11 @@ import { Image } from "astro:assets";
                     href="https://transparencia.tabasco.gob.mx/ciudadano/dependencia/fracciones/73/5/"
                 >
                     <Image
-                        src={Transparencia}
+                        src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Ftransparencia.png?alt=media&token=1f7a8b2f-8359-42d8-8302-2f59a5ee3244"
                         class="bg-transparent rounded-md shadow-lg"
                         height={40}
-                        alt="Ejemplo optimizado"
+                        width={80}
+                        alt="Transparencia"
                         draggable="false"
                         loading="lazy"
                     />
@@ -195,10 +194,11 @@ import { Image } from "astro:assets";
 
                 <a href="">
                     <Image
-                        src={Patrimonio}
+                        src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Fpatrimonio.png?alt=media&token=55c702ec-3203-43dd-a61c-6676c21569cc"
                         class="bg-transparent rounded-md shadow-lg"
                         height={40}
-                        alt="Ejemplo optimizado"
+                        width={80}
+                        alt="Patrimonio"
                         draggable="false"
                         loading="lazy"
                     />

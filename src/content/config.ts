@@ -8,6 +8,7 @@ const degreesCollection = defineCollection({
         duration: z.string(),
         modality: z.string(),
         image: z.string(),
+        pdf: z.string(),
     })
 })
 

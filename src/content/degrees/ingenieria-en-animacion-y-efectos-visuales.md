@@ -5,16 +5,17 @@ description: Forma expertos en animación y efectos visuales con tecnología ava
 duration: 3 años
 modality: Presencial
 image: animacion.jpg
+pdf: Animación.pdf
 ---
 
-## ¿Que es la ingeniería en Software?
+## ¿Que hace un ingeniero en Animación y Efectos Visuales?
 
-Es una ingeniería orientada a la formación de profesionales altamente capacitados en el análisis, diseño e implementación de software de calidad. Asi mismo, se enfoca en la gestión y admisnitración del proceso de desarrollo de software permitiendo que dicho proceso tenga la mejor relación de costo-beneficio. Actualmente está considerada como una de las carreras que ofrece mejores condiciones de crecimiento profesional, sobre todo si consideramos el creciente mercado que ha tenido la región y el pais en general.
+El Ingeniero en Animación y Efectos Visuales es capaz resolver problemas de forma creativa e innovadora modelando, animando, desarrollando y creando contenidos multimedia y efectos visuales para la industria publicitaria, el entretenimiento digital, videojuegos y sectores como la ciencia, la educación y la medicina. 
 
 ## Perfil de ingreso
 
-El  alumno  que  desee  cursar  esta  carrera  de  ingeniería  debe  de  haber egresado del nivel medio superior preferentemente en el área de Ciencias Físico-Matemáticas;  también  es  importante  que  tenga  habilidades  de razonamiento  lógico,  creatividad  para  solución  para  de  problemas, inclinado  hacia  la  innovación  para  maximizar  el  uso  de  dispositivos electrónicos,  capacidad  de  análisis  e  interés  por  las  ciencias  de  la computación.
+Ser un estudiante activo, creatividad, imaginación y sentido de inventiva, Interés y gusto por la tecnología y las artes, gusto por los medios audiovisuales y la capacidad de análisis y abstracción.
 
 ## Perfil de egreso
 
-Se tratará de un profesionista dotado con amplios conocimientos capaz de planear,  diseñar,  evaluar,  construir,  innovar  y  mantener  sistemas  de software de alto impacto, capaz de traer nuevas estrategias en el ámbito de  las  tecnologías  de  información,  dotado  con  una  formación  integral inclinado  hacia  todas  las  áreas  del  quehacer  humano  con  un  amplio sentido ético para ejercer la ingeniería con alta responsabilidad social.
+Profesionales conscientes de su responsabilidad ética y social, competentes para la creación, desarrollo y evoluación de soluciones tecnológicas en el ramo del arte digital y la animación, que transfieran información audiovisual de sectores como la ciencia, la medicina, la educación, el entretenimiento y la publicidad dentro de las organizaciones que se desempeñan en el ámbito público y privado.
