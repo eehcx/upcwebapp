@@ -8,11 +8,22 @@ export const SITE_DESCRIPTION = 'Welcome to my website!';
 
 export const navigation = [
     { name: "Inicio", href: "/" },
-    { name: "Académico", href: "/academico" },
-    { name: "Conócenos", href: "/conocenos" },
+    { 
+        name: "Conócenos", 
+        submenu: [
+            { name: "Bienvenida", href: "/bienvenida" },
+            { name: "Antecedentes", href: "/antecedentes" },
+        ]
+    },
     { name: "Vinculación", href: "/vinculacion" },
-    { name: "Admisiones", href: "/admisiones" },
-    { name: "Normatividad", href: "/normatividad" }
+    { name: "Admisión", href: "/admision" },
+    { 
+        name: "Normatividad", 
+        submenu: [
+            { name: "Leyes y reglamentos", href: "/leyes-reglamentos" },
+            { name: "Información Financiera", href: "/informacion-financiera" },
+        ]
+    }
 ];
 
 export const IS = [

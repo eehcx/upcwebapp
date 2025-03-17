@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Footer from "@/components/common/Footer.astro";
+
+export async function getStaticPaths() {
+    const community = await getCollection("community");
+
+    return community.map((community) => ({
+        params: { id: community.slug },
+        props: { community },
+    }));
+}
+
+const dataInfo = await getCollection("community");
+
+const { community } = Astro.props;
+const { data, slug } = community;
+const { title, description, keywords, date, category, tags } = data;
+
+const { Content } = await render(community);
+
+export const prerender = true;
+---
+
+<BaseLayout>
+    <main class="w-full h-full bg-neutral-50">
+        <div
+        class="prose prose-xl mx-auto prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-a:no-underline hover:prose-a:underline prose-th:text-[17px] prose-td:text-[17px] prose-headings:text-neutral-900 prose-p:text-gray-700 prose-p:text-[17px] prose-li:text-[17px] py-32"
+        >
+        <h1>{title}</h1>
+            <Content />
+        </div>
+    </main>
+    <Footer />
+</BaseLayout>

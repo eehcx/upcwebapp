@@ -47,7 +47,7 @@ const MainCarousel: React.FC<Props> = ({ images, video }) => {
     }, [api, current, count]);
     
     return (
-        <div className="mx-auto w-full h-screen relative bg-neutral-900">
+        <div className="mx-auto w-full h-screen relative bg-neutral-900 z-0">
             <Carousel setApi={setApi} className="w-full h-full">
                 <CarouselContent>
                     <CarouselItem className="relative w-full h-screen">
