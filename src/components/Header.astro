@@ -1,54 +1,73 @@
 ---
-import Logo from '@/assets/logolema.png'
-import HeaderLink from './HeaderLink.astro'
-import { SingleMenu } from './nagivation/SingleMenu';
-import { SITE_TITLE, navigation } from '@/const'
+import Logo from "@/assets/logolema.png";
+import HeaderLink from "./HeaderLink.astro";
+import { SingleMenu } from "./nagivation/SingleMenu";
+import { SITE_TITLE, navigation } from "@/const";
 
 const currentPath = Astro.url.pathname;
 ---
 
-<script is:inline lang="ts">
-    document.addEventListener("DOMContentLoaded", () => {
-        const element = document.querySelector("#navbar");
-    
-        if (element instanceof HTMLElement) {
-            window.addEventListener("scroll", () => {
-            if (window.scrollY > 70) {
-                element.classList.add("fixed", "top-0", "left-0", "w-full");
-            } else {
-                element.classList.remove("fixed", "top-0", "left-0", "w-full");
-            }
-            });
+<script>
+    function handleScroll() {
+        const navbar = document.querySelector("#navbar");
+        if (navbar instanceof HTMLElement) {
+        if (window.scrollY > 70) {
+            navbar.classList.add("fixed", "top-0", "left-0", "w-full");
+        } else {
+            navbar.classList.remove("fixed", "top-0", "left-0", "w-full");
         }
-    });
-</script>  
+        }
+    }
 
-<header id="navbar" class=" top-0 left-0 w-full bg-[#f8f8f8] text-black shadow-lg shadow-neutral-200/20 z-50">
+    handleScroll();
+
+    document.addEventListener("scroll", handleScroll, { passive: true });
+
+    document.addEventListener("astro:page-load", () => {
+        handleScroll();
+        document.addEventListener("scroll", handleScroll, { passive: true });
+    });
+
+    document.addEventListener("astro:before-swap", () => {
+        document.removeEventListener("scroll", handleScroll);
+    });
+</script>
+
+<header
+    id="navbar"
+    class="top-0 left-0 w-full bg-[#f8f8f8] text-black shadow-lg shadow-neutral-200/20 z-50"
+>
     <nav class="max-w-7xl mx-auto px-4">
         <div class="flex justify-between items-center h-20">
-            <div class="flex-shrink-0">
-                <a href="/">
-                    <img 
-                        src={Logo.src}
-                        alt={SITE_TITLE}
-                        class="h-14 bg-transparent select-none pointer-events-none"
-                        draggable="false"
-                        loading="lazy"
-                    />
-                </a>
+        <div class="flex-shrink-0">
+            <a href="/">
+                <img
+                    src={Logo.src}
+                    alt={SITE_TITLE}
+                    class="h-14 bg-transparent select-none pointer-events-none"
+                    draggable="false"
+                    loading="lazy"
+                />
+            </a>
+        </div>
+        <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4 select-none">
+            {
+                navigation.map((item) => (
+                <HeaderLink
+                    href={item.href}
+                    currentPath={currentPath}
+                    Name={item.name}
+                >
+                    {item.name}
+                </HeaderLink>
+                ))
+            }
             </div>
-            <div class="hidden md:block">
-                <div class="ml-10 flex items-baseline space-x-4 select-none">
-                    {navigation.map((item) => (
-                        <HeaderLink href={item.href} currentPath={currentPath} Name={item.name}>
-                            {item.name}
-                        </HeaderLink>
-                    ))}
-                </div>
-            </div>
-            <div class="hidden md:block">
-                <SingleMenu client:load />
-            </div>
+        </div>
+        <div class="hidden md:block">
+            <SingleMenu client:load />
+        </div>
         </div>
     </nav>
 </header>
