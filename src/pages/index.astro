@@ -1,122 +1,184 @@
 ---
 // Global imports
-import { Separator } from '@/components/ui/separator';
-import { getCollection } from 'astro:content';
-import { GalleryHorizontalEnd, Wallet, LibraryBig, Users, ChevronRight } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { getCollection } from "astro:content";
+import {
+	GalleryHorizontalEnd,
+	Wallet,
+	LibraryBig,
+	Users,
+	ChevronRight,
+} from "lucide-react";
 import { Image } from "astro:assets";
 
-import MainCarousel from '@/components/home/MainCarousel.tsx';
-import BlogCard from '@/components/home/BlogCard.astro';
-import Footer from '@/components/common/Footer.astro';
-import LinkButton from '@/components/home/education/LinkButton.astro';
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import MainCarousel from "@/components/home/MainCarousel.tsx";
+import BlogCard from "@/components/home/BlogCard.astro";
+import Footer from "@/components/common/Footer.astro";
+import LinkButton from "@/components/home/education/LinkButton.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const images = [
-	{ src: "https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/noticias%2Fblog-1.jpg?alt=media&token=e8c9da12-0988-450c-9bca-949d50d7ce43", alt: "" },
-	{ src: "https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/noticias%2Fblog-2.jpg?alt=media&token=f8eecea2-e630-4d9b-9883-36d5f62eb1a2", alt: "" },
-	{ src: "https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/noticias%2Fblog-3.jpg?alt=media&token=607c620d-6769-4784-8c29-68fb4c076ceb", alt: "" },
-	{ src: "https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/noticias%2Fblog-4.jpg?alt=media&token=3f1a9e4a-8470-41fb-9c94-e4e325d1efd9", alt: "" }
+	{
+		src: "/images/graduacion.jpg",
+		alt: "",
+	},
+	{
+		src: "/images/evento_mujer.jpg",
+		alt: "",
+	},
+	{
+		src: "/images/lab_biotecnologia.jpg",
+		alt: "",
+	},
+	{
+		src: "/images/alumno_feliz.jpg",
+		alt: "",
+	},
 ];
 
-const degrees = await getCollection('degrees')
+const degrees = await getCollection("degrees");
 
-export const prerender = true
+export const prerender = true;
 ---
 
 <BaseLayout>
 	<main class="bg-neutral-50">
 		<MainCarousel client:load video="trailer.mp4" images={images} />
-	
-		<section id="carreras" class="h-full w-full py-1" aria-label="Nuestras carreras destacadas">
-			<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-1 h-full w-full">
-				{ degrees.map((item => {
-						const { slug, data } = item
-						const { title, subtitle, description, duration, modality, image, pdf } = data
-	
-						return (
-							<a href={`carreras/${slug}`} class="relative flex justify-center w-full" title={title} >
-								<div class="relative w-full">
-									<img 
-										transition:name={`img-${slug}`}
-										src={`/images/${image}`}
-										class="select-none transition-transform duration-300 transform w-full h-auto md:h-[160px] object-cover"
-										alt={title}
-										draggable="false"
-										loading="lazy"
-									>
-									<div class="absolute inset-0 bg-red-600/70 hover:bg-red-600/10 flex items-center justify-center transition-opacity duration-200 opacity-100 hover:opacity-0">
-										<h4 class="text-white text-lg font-semibold text-center px-2">{subtitle}</h4>
+
+		<section
+			id="carreras"
+			class="h-full w-full py-1"
+			aria-label="Nuestras carreras destacadas"
+		>
+			<div
+				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-1 h-full w-full"
+			>
+				{
+					degrees
+						.map((item) => {
+							const { slug, data } = item;
+							const {
+								title,
+								subtitle,
+								description,
+								duration,
+								modality,
+								image,
+								pdf,
+							} = data;
+
+							return (
+								<a
+									href={`carreras/${slug}`}
+									class="relative flex justify-center w-full"
+									title={title}
+								>
+									<div class="relative w-full">
+										<img
+											transition:name={`img-${slug}`}
+											src={`/images/${image}`}
+											class="select-none transition-transform duration-300 transform w-full h-auto md:h-[160px] object-cover"
+											alt={title}
+											draggable="false"
+											loading="lazy"
+										/>
+										<div class="absolute inset-0 bg-red-600/70 hover:bg-red-600/10 flex items-center justify-center transition-opacity duration-200 opacity-100 hover:opacity-0">
+											<h4 class="text-white text-lg font-semibold text-center px-2">
+												{subtitle}
+											</h4>
+										</div>
 									</div>
-								</div>
-							</a>
-						)
-					})).sort()
+								</a>
+							);
+						})
+						.sort()
 				}
 			</div>
 		</section>
-	
+
 		<section id="educacion" class="py-16 sm:py-20">
 			<div class="mx-auto max-w-7xl px-6 lg:px-8">
 				<div class="mx-auto pb-10 max-w-2xl lg:mx-0">
-					<h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-pretty text-neutral-900 ">Educación</h2>
+					<h2
+						class="text-2xl sm:text-3xl font-semibold tracking-tight text-pretty text-neutral-900"
+					>
+						Educación
+					</h2>
 				</div>
 			</div>
-			<div class="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-9 items-center">
+			<div
+				class="mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-9 items-center"
+			>
 				<div>
-					<Image 
-						src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Feducacion.jpg?alt=media&token=28b6e8cd-a1f5-47c3-83ec-b1575fe44184"
+					<Image
+						src="/images/alumno_explicando.jpg"
 						height={390}
 						width={590}
-						alt="Estudiante de mecanica automotriz" 
+						alt="Estudiante de mecanica automotriz"
 						draggable="false"
 						loading="lazy"
 					/>
 				</div>
 				<div class="prose">
-					<h2 class="text-5xl font-semibold text-neutral-950">Oferta educativa</h2>
-					<p class="mt-4 text-lg text-neutral-600">En la UPC formamos profesionales para el futuro, con educación técnica y humanista de alta calidad que responde a las demandas de sectores emergentes y tradicionales.</p>
+					<h2 class="text-5xl font-semibold text-neutral-950">
+						Oferta educativa
+					</h2>
+					<p class="mt-4 text-lg text-neutral-600">
+						En la UPC formamos profesionales para el futuro, con
+						educación técnica y humanista de alta calidad que
+						responde a las demandas de sectores emergentes y
+						tradicionales.
+					</p>
 					<div class="mt-10">
-						<LinkButton 
-							href="" 
-							title="Hoy es el día" 
-							text="Admisión" 
-							icon={GalleryHorizontalEnd}	
+						<LinkButton
+							href="/admision"
+							title="Hoy es el día"
+							text="Admisión"
+							icon={GalleryHorizontalEnd}
 						/>
-						<LinkButton 
-							href="" 
-							title="Oferta educativa" 
-							text="Oferta educativa" 
-							icon={Users}	
+						<LinkButton
+							href="/oferta-educativa"
+							title="Oferta educativa"
+							text="Oferta educativa"
+							icon={Users}
 						/>
-						<LinkButton 
-							href="" 
-							title="Modelo educativo" 
-							text="Modelo educativo" 
-							icon={LibraryBig}	
-						/>	
-						<LinkButton 
-							href="" 
-							title="Becas" 
-							text="Becas" 
-							icon={Wallet}	
-						/>							  
+						<LinkButton
+							href="/modelo-educativo"
+							title="Modelo educativo"
+							text="Modelo educativo"
+							icon={LibraryBig}
+						/>
+						<LinkButton
+							href="/becas"
+							title="Becas"
+							text="Becas"
+							icon={Wallet}
+						/>
 					</div>
 				</div>
 			</div>
 			<div class="mx-auto max-w-7xl px-6 lg:px-8">
 				<Separator className="mt-10" />
-	
 			</div>
 		</section>
-	
-		<section id="noticias" >
+
+		<section id="boletines">
 			<div class="mx-auto max-w-7xl px-6 lg:px-8">
 				<div class="mx-auto max-w-2xl lg:mx-0">
-					<h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-pretty text-neutral-900">Noticias</h2>
-					<p class="mt-2 prose text-lg/8 text-neutral-600">La UPC te muestra los eventos más relevantes que ocurren dentro de la Comunidad Universitaria y su entorno.</p>
+					<h2
+						class="text-2xl sm:text-3xl font-semibold tracking-tight text-pretty text-neutral-900"
+					>
+						Boletines
+					</h2>
+					<p class="mt-2 prose text-lg/8 text-neutral-600">
+						La UPC te muestra los eventos más relevantes que ocurren
+						dentro de la Comunidad Universitaria y su entorno.
+					</p>
 				</div>
 				<Separator className="my-10" />
-				<div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+				<div
+					class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+				>
 					<BlogCard
 						date="Mar 16, 2020"
 						category="Animación y Efectos Visuales"
@@ -148,7 +210,7 @@ export const prerender = true
 			</div>
 			<Separator className="my-10" />
 		</section>
-	
+
 		<!--
 		<section id="campus" class="flex-1 bg-neutral-100 h-screen w-full">
 			<div class="flex justify-between items-center m-5 py-5">
@@ -173,65 +235,77 @@ export const prerender = true
 			</iframe>
 		</section>
 		-->
-	
+
 		<section id="afiliaciones" class="pb-24 py-10 sm:pb-32">
 			<div class="mx-auto max-w-7xl px-6 lg:px-8 prose">
-				<h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-pretty text-neutral-900">Acuerdos</h2>
-				<a href="/docs/CONVENIOS PAGINA.pdf" class="no-underline flex items-center text-neutral-600 hover:text-neutral-900 mb-20 mx-auto" title="Ver todos los convenios vigentes" target="_blank" rel="noopener noreferrer">
+				<h2
+					class="text-2xl sm:text-3xl font-semibold tracking-tight text-pretty text-neutral-900"
+				>
+					Acuerdos
+				</h2>
+				<a
+					href="/docs/CONVENIOS PAGINA.pdf"
+					class="no-underline flex items-center text-neutral-600 hover:text-neutral-900 mb-20 mx-auto"
+					title="Ver todos los convenios vigentes"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<span class="text-lg">Todos los convenios vigentes</span>
 					<ChevronRight className="mr-3" size={20} />
 				</a>
-				<div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
-					<Image 
-						src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Fconvenios%2Fyumka.png?alt=media&token=99dda9bc-3481-4579-a566-a430c15c57b3"
+				<div
+					class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6"
+				>
+					<Image
+						src="/images/convenios/yumka.png"
 						class="col-span-2 h-12 w-full object-contain lg:col-span-1"
 						height={60}
 						width={100}
-						alt="Yumka" 
+						alt="Yumka"
 						draggable="false"
 						loading="lazy"
 					/>
-					<Image 
-						src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Fconvenios%2Flogo_cndh.png?alt=media&token=6ba773c2-9693-49c9-9124-d0bd3a102024"
+					<Image
+						src="/images/convenios/logo_cndh.png"
 						class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
 						height={60}
 						width={100}
-						alt="CNDH " 
+						alt="CNDH "
 						draggable="false"
 						loading="lazy"
 					/>
-					<Image 
-						src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Fconvenios%2FLafayette.png?alt=media&token=65413fc2-47e3-4dd0-bf9d-592cc89ce414"
-						alt="Universidad Lafayette" 
+					<Image
+						src="/images/convenios/Lafayette.png"
+						alt="Universidad Lafayette"
 						height={60}
 						width={130}
 						draggable="false"
 						loading="lazy"
 					/>
-					<Image 
-						src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Fconvenios%2Fpemex.png?alt=media&token=cc6effb7-7846-4a6c-b1cb-d147905d17c4"
+					<Image
+						src="/images/convenios/pemex.png"
 						class="col-span-2 h-12 w-full object-contain lg:col-span-1"
 						height={60}
 						width={100}
-						alt="Pemex Petroleos mexicanos" 
+						alt="Pemex Petroleos mexicanos"
 						draggable="false"
 						loading="lazy"
 					/>
-					<Image 
-						src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Fconvenios%2Fcfe.png?alt=media&token=43328e4b-06c5-4342-bea0-bc05fce7227a"
+					<Image
+						src="/images/convenios/cfe.png"
 						class="col-span-2 h-12 w-full object-contain lg:col-span-1"
 						height={60}
 						width={100}
-						alt="CFE" 
+						alt="CFE"
 						draggable="false"
 						loading="lazy"
 					/>
-					<Image 
-						src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Fconvenios%2Ftelmex.png?alt=media&token=2c3c404f-8319-4627-a3c4-78c03711b512"
+					<Image
+						src="/images/convenios/telmex.png"
 						class="col-span-2 h-12 w-full object-contain lg:col-span-1"
 						height={60}
 						width={100}
-						alt="Telmex Telefonos de mexico" 
+						alt="Telmex Telefonos de mexico"
 						draggable="false"
 						loading="lazy"
 					/>

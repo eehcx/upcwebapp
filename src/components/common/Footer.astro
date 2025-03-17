@@ -1,8 +1,11 @@
 ---
 import { Separator } from "../ui/separator";
-import Logo from "@/assets/logolema.png";
 import { navigation, SITE_TITLE } from "@/const";
 import { Image } from "astro:assets";
+
+import Itaip from "@/assets/images/itaip.png";
+import TransparenciaEstado from "@/assets/images/transparenciaestatal.png";
+import TransparenciaNacional from "@/assets/images/transparencianacional.png";
 ---
 
 <footer class="bg-neutral-900 text-white py-10">
@@ -17,22 +20,20 @@ import { Image } from "astro:assets";
             <div>
                 <p class="text-gray-300">
                     Dirección:
-                    <a
-                        class="hover:text-white"
-                        href="http://">Carretera Villahermosa Teapa, km 22.5</a
+                    <a class="hover:text-white" href="http://"
+                        >Carretera Villahermosa Teapa, km 22.5</a
                     >
                 </p>
 
                 <p class="text-gray-300">
-                    Teléfono: 
-                    <a
-                        class="hover:text-white"
-                        href="tel:+52 993 312 5893">+52 993 312 5893</a
+                    Teléfono:
+                    <a class="hover:text-white" href="tel:+52 993 312 5893"
+                        >+52 993 312 5893</a
                     >
                 </p>
 
                 <p class="text-gray-300">
-                    Email: 
+                    Email:
                     <a
                         class="hover:text-white"
                         href="mailto:informes@updc.edu.mx"
@@ -57,8 +58,7 @@ import { Image } from "astro:assets";
                                 class=" text-gray-300 hover:text-white hover:underline"
                             >
                                 {item.name}
-                            </a>
-                            {" "}
+                            </a>{" "}
                         </li>
                     ))
                 }
@@ -166,38 +166,40 @@ import { Image } from "astro:assets";
             </div>
 
             <div class="flex pt-10 space-x-3 items-center">
-                <a href="">
+                <a
+                    href="https://transparencia.tabasco.gob.mx/ciudadano/dependencia/fracciones/73/5/"
+                >
                     <Image
-                        src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Fsocial.jpg?alt=media&token=205c92aa-45f0-4513-8da6-89137b293bb4"
+                        src={TransparenciaEstado}
                         class="bg-transparent rounded-md shadow-lg"
                         height={40}
-                        width={80}
+                        width={50}
                         alt="Social"
                         draggable="false"
                         loading="lazy"
                     />
                 </a>
 
-                <a
-                    href="https://transparencia.tabasco.gob.mx/ciudadano/dependencia/fracciones/73/5/"
-                >
+                <a href="https://www.itaip.org.mx/site/">
                     <Image
-                        src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Ftransparencia.png?alt=media&token=1f7a8b2f-8359-42d8-8302-2f59a5ee3244"
+                        src={Itaip}
                         class="bg-transparent rounded-md shadow-lg"
-                        height={40}
-                        width={80}
+                        height={27}
+                        width={70}
                         alt="Transparencia"
                         draggable="false"
                         loading="lazy"
                     />
                 </a>
 
-                <a href="">
+                <a
+                    href="https://consultapublicamx.plataformadetransparencia.org.mx/vut-web/faces/view/consultaPublica.xhtml#inicio"
+                >
                     <Image
-                        src="https://firebasestorage.googleapis.com/v0/b/upc-tabasco-2c495.firebasestorage.app/o/estaticos%2Fpatrimonio.png?alt=media&token=55c702ec-3203-43dd-a61c-6676c21569cc"
+                        src={TransparenciaNacional}
                         class="bg-transparent rounded-md shadow-lg"
-                        height={40}
-                        width={80}
+                        height={27}
+                        width={70}
                         alt="Patrimonio"
                         draggable="false"
                         loading="lazy"
@@ -222,12 +224,7 @@ import { Image } from "astro:assets";
             Política de Privacidad</a
         >
         |
-        <a
-            class="font-normal hover:underline"
-            href="http://"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
+        <a class="font-normal hover:underline" href="/bienvenida">
             Sobre el sitio
         </a>
     </p>

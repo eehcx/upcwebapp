@@ -18,7 +18,19 @@ const infoCollection = defineCollection({
     })
 })
 
+const communityCollection = defineCollection({
+    schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        keywords: z.string(),
+        date: z.date(),
+        category: z.string(),
+        tags: z.string(),
+    })
+})
+
 export const collections = { 
     degrees: degreesCollection,
-    info: infoCollection,
+    information: infoCollection,
+    community: communityCollection,
 }
