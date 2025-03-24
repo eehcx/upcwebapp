@@ -1,11 +1,15 @@
 ---
+// Global components
+import { AlignRight, AlignLeft } from "lucide-react";
+import { Image } from "astro:assets";
+
 // Local Components
 import Logo from "@/assets/logolema.png";
 import HeaderLink from "./HeaderLink.astro";
 import HeaderDropdown from "./HeaderDropdown.astro";
 
 // Global Data and SEO
-import { SingleMenu } from "./nagivation/SingleMenu";
+import SingleMenu from "./nagivation/SingleMenu";
 import { SITE_TITLE, navigation } from "@/const";
 
 const currentPath = Astro.url.pathname;
@@ -23,6 +27,13 @@ const currentPath = Astro.url.pathname;
         }
     }
 
+    function toggleMenu() {
+        const menu = document.querySelector("#mobile-menu");
+        if (menu) {
+            menu.classList.toggle("hidden");
+        }
+    }
+
     handleScroll();
 
     document.addEventListener("scroll", handleScroll, { passive: true });
@@ -30,20 +41,53 @@ const currentPath = Astro.url.pathname;
     document.addEventListener("astro:page-load", () => {
         handleScroll();
         document.addEventListener("scroll", handleScroll, { passive: true });
+
+        const menuButton = document.querySelector("#menu-button");
+        const closeMenuButton = document.querySelector("#close-menu-button");
+
+        if (menuButton) {
+            menuButton.addEventListener("click", toggleMenu);
+        }
+        if (closeMenuButton) {
+            closeMenuButton.addEventListener("click", toggleMenu);
+        }
     });
 
     document.addEventListener("astro:before-swap", () => {
         document.removeEventListener("scroll", handleScroll);
+
+        const menuButton = document.querySelector("#menu-button");
+        const closeMenuButton = document.querySelector("#close-menu-button");
+
+        if (menuButton) {
+            menuButton.removeEventListener("click", toggleMenu);
+        }
+        if (closeMenuButton) {
+            closeMenuButton.removeEventListener("click", toggleMenu);
+        }
     });
 </script>
 
 <header
     id="navbar"
-    class="top-0 left-0 w-full bg-[#f8f8f8] text-black shadow-lg shadow-neutral-200/20 z-50"
+    class="w-full bg-[#f8f8f8] text-black shadow-lg shadow-neutral-200/20 z-50"
 >
     <nav class="max-w-7xl mx-auto px-4">
-        <div class="flex justify-between items-center h-20">
-            <div class="flex-shrink-0">
+        <div class="flex justify-between items-center h-14 md:h-16 lg:h-20">
+            <div class="md:hidden">
+                <a href="/">
+                    <Image
+                        src="/logo.png"
+                        height={50}
+                        width={50}
+                        alt="Estudiante de mecanica automotriz"
+                        draggable="false"
+                        loading="lazy"
+                    />
+                </a>
+            </div>
+
+            <div class="flex-shrink-0 hidden md:block">
                 <a href="/">
                     <img
                         src={Logo.src}
@@ -54,6 +98,18 @@ const currentPath = Astro.url.pathname;
                     />
                 </a>
             </div>
+
+            <!-- Botón Hamburguesa -->
+            <div class="md:hidden">
+                <button
+                    id="menu-button"
+                    class="text-neutral-900 focus:outline-none"
+                >
+                    <AlignRight />
+                </button>
+            </div>
+
+            <!-- Menú principal -->
             <div class="hidden md:block">
                 <div class="ml-10 flex items-baseline space-x-4 select-none">
                     {
@@ -78,8 +134,87 @@ const currentPath = Astro.url.pathname;
                 </div>
             </div>
             <div class="hidden md:block">
-                <SingleMenu client:load />
+                <SingleMenu background="bg-[#ECECEC]" client:load />
             </div>
         </div>
     </nav>
+
+    <!-- Menú móvil -->
+    <div
+        id="mobile-menu"
+        class="h-screen hidden md:hidden bg-[#f8f8f8]/80 backdrop-blur-sm text-black shadow-lg fixed top-0 left-0 w-full z-50 overflow-y-auto"
+    >
+        <div class="flex flex-row justify-between px-8 pt-12">
+            <div class="md:hidden">
+                <button
+                    id="close-menu-button"
+                    class="text-neutral-900 focus:outline-none"
+                >
+                    <AlignLeft />
+                </button>
+            </div>
+            <div>
+                <Image
+                    src="/logo.png"
+                    height={50}
+                    width={50}
+                    alt="Estudiante de mecanica automotriz"
+                    draggable="false"
+                    loading="lazy"
+                />
+            </div>
+        </div>
+
+        <!-- Principales -->
+        <div class="md:col-span-2 flex flex-col px-4 py-5">
+            <p class="px-4 text-sm text-neutral-500 pb-2">Principales</p>
+            {
+                navigation
+                .filter((item) => !item.submenu)
+                .map((item) => (
+                    <a
+                        href={item.href}
+                        transition:name={item.name}
+                        class:list={[
+                            "py-[10px] px-4 text-4xl font-medium",
+                            currentPath === item.href
+                                ? "text-[#111]"
+                                : "text-neutral-500 hover:text-[#111]",
+                        ]}
+                    >
+                        {item.name}
+                    </a>
+                ))
+            }
+        </div>
+
+        <!-- En móvil, los submenus también se muestran debajo -->
+        <div class="block md:hidden mt-8 mx-8">
+            {
+                navigation
+                .filter((item) => item.submenu)
+                .map((item) => (
+                    <div class="mb-4">
+                        <p class="text-sm text-neutral-700">{item.name}</p>
+                        <div class="flex flex-col">
+                            {item.submenu &&
+                                item.submenu.map((subitem) => (
+                                    <a
+                                        href={subitem.href}
+                                        class:list={[
+                                            "py-2 text-2xl",
+                                            currentPath === subitem.href
+                                                ? "text-[#111]"
+                                                : "text-neutral-500 hover:text-[#111]",
+                                        ]}
+                                    >
+                                        {subitem.name}
+                                    </a>
+                                ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
 </header>

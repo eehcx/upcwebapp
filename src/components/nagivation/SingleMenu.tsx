@@ -1,12 +1,16 @@
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarTrigger } from "@/components/ui/menubar";
 import { IS } from "@/const";
 
-export function SingleMenu() {
+interface Props {
+    background: string;
+}
+
+const SingleMenu: React.FC<Props> = ({ background }) => {
 
     return (
-        <Menubar className="bg-[#ECECEC] rounded-none border-none shadow-none">
+        <Menubar className={`${background} rounded-none border-none shadow-none`}>
             <MenubarMenu>
-                <MenubarTrigger className="rounded-none cursor-pointer">
+                <MenubarTrigger className="rounded-none cursor-pointer bg-transparent">
                     SIIUPC
                 </MenubarTrigger>
                 <MenubarContent className="rounded-none bg-[#f8f8f8]">
@@ -25,3 +29,5 @@ export function SingleMenu() {
         </Menubar>
     )
 }
+
+export default SingleMenu;
