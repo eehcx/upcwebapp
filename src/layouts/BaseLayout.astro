@@ -1,11 +1,11 @@
 ---
 // Global imports
-import '@/index.css'
+import "@/index.css";
 // Local imports
-import { metadata } from '@/data/metadata';
-import Header from '@/components/Header.astro';
-import BaseHead from '@/components/BaseHead.astro';
-import TopAlert from '@/components/TopAlert.astro';
+import { metadata } from "@/data/metadata";
+import Header from "@/components/Header.astro";
+import BaseHead from "@/components/BaseHead.astro";
+import TopAlert from "@/components/TopAlert.astro";
 
 // current path
 const currentPath = Astro.url.pathname;
@@ -22,8 +22,24 @@ const fechaFormateada = fecha.toLocaleDateString('es-ES', opciones);
 const fechaCapitalizada = fechaFormateada.charAt(0).toUpperCase() + fechaFormateada.slice(1);
 */
 
----
+let alert = null;
 
+try {
+	const res = await fetch(
+		"https://upc-api-1-xmr7.onrender.com/upc/v1/notices",
+	);
+	if (res.ok) {
+		const data = await res.json();
+		if (data.fijado) {
+			alert = data;
+		}
+	}
+} catch (error) {
+	console.error("Error obteniendo avisos:", error);
+}
+
+// ⚡ Acceso anticipado. ¡Explórala mientras la mejoramos!
+---
 
 <!doctype html>
 <html lang="es-MX">
@@ -31,10 +47,8 @@ const fechaCapitalizada = fechaFormateada.charAt(0).toUpperCase() + fechaFormate
 		<BaseHead {...pageMetadata} />
 	</head>
 	<body class="overflow-x-hidden">
-		<TopAlert>
-			⚡ Acceso anticipado. ¡Explórala mientras la mejoramos!
-		</TopAlert>
-		<Header/>
+		{alert && <TopAlert>{alert.description}</TopAlert>}
+		<Header />
 		<slot />
 	</body>
 </html>
