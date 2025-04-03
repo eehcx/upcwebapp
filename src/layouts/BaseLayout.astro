@@ -27,6 +27,12 @@ let alert = null;
 try {
 	const res = await fetch(
 		"https://upc-api-1-xmr7.onrender.com/upc/v1/notices",
+		{
+			cache: "no-store",
+			headers: {
+				"Cache-Control": "no-cache",
+			},
+		},
 	);
 	if (res.ok) {
 		const data = await res.json();
