@@ -1,11 +1,11 @@
 ---
 // Global imports
-import '@/index.css'
-import { ClientRouter } from 'astro:transitions';
+import "@/index.css";
+import { ClientRouter } from "astro:transitions";
 // Local imports
-import { SITE_TITLE } from '@/const';
-import Header from '@/components/Header.astro';
-import TopAlert from '@/components/TopAlert.astro';
+import { SITE_TITLE } from "@/const";
+import Header from "@/components/Header.astro";
+import TopAlert from "@/components/TopAlert.astro";
 
 type Props = {
     title: string;
@@ -13,12 +13,28 @@ type Props = {
 };
 
 const { title, description }: Props = Astro.props;
+
+let alert = null;
+
+try {
+    const res = await fetch(
+        "https://upc-api-1-xmr7.onrender.com/upc/v1/notices",
+    );
+    if (res.ok) {
+        const data = await res.json();
+        if (data.fijado) {
+            alert = data;
+        }
+    }
+} catch (error) {
+    console.error("Error obteniendo avisos:", error);
+}
 ---
 
 <!doctype html>
 <html lang="es-MX">
-	<head>
-		<meta charset="UTF-8" />
+    <head>
+        <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/logo.png" />
         <meta name="generator" content={Astro.generator} />
@@ -31,12 +47,10 @@ const { title, description }: Props = Astro.props;
         <meta property="og:url" content={Astro.site} />
 
         <ClientRouter />
-	</head>
-	<body class="overflow-x-hidden bg-neutral-50">
-        <TopAlert>
-			⚡ Acceso anticipado. ¡Explórala mientras la mejoramos!
-		</TopAlert>
-		<Header/>
-		<slot />
-	</body>
+    </head>
+    <body class="overflow-x-hidden bg-neutral-50">
+        {alert && <TopAlert>{alert.description}</TopAlert>}
+        <Header />
+        <slot />
+    </body>
 </html>

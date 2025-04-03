@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Footer from "@/components/common/Footer.astro";
+---
+
+<BaseLayout>
+    <main
+        class="flex flex-col items-center justify-center h-screen bg-[#f8f8f8]"
+    >
+        <div class="text-center">
+            <p class="text-lg font-semibold text-red-600">404</p>
+            <h1
+                class="mt-4 text-5xl font-semibold tracking-tight text-balance text-neutral-900 sm:text-7xl"
+            >
+                Página no encontrada
+            </h1>
+            <p class="mt-6 text-lg text-neutral-500 sm:text-xl">
+                Lamentamos la inconveniencia. La página que busca no está
+                disponible o ha sido trasladada.
+            </p>
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+                <a href="/" class="text-sm font-semibold text-neutral-900"
+                    >Volver al inicio <span aria-hidden="true">&rarr;</span></a
+                >
+            </div>
+        </div>
+    </main>
+    <Footer />
+</BaseLayout>

@@ -13,10 +13,9 @@ import {
 
 interface Props {
     images: { src: string; alt?: string }[];
-    video: string;
 }
 
-const MainCarousel: React.FC<Props> = ({ images, video }) => {
+const MainCarousel: React.FC<Props> = ({ images }) => {
     const [api, setApi] = React.useState<CarouselApi>();
     const [current, setCurrent] = React.useState(0);
     const [count, setCount] = React.useState(0);
@@ -60,7 +59,8 @@ const MainCarousel: React.FC<Props> = ({ images, video }) => {
                                     playsInline
                                     className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover"
                                 >
-                                    <source src={video} type="video/mp4" />
+                                    {/*<source src="trailer.mp4" type="video/mp4" />*/}
+                                    <source src="trailer.webm" type="video/webm" />
                                     Tu navegador no soporta la reproducción de videos.
                                 </video>
                             </CardContent>
