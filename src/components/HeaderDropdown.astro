@@ -14,10 +14,10 @@ const isActive = submenu?.some((item) => currentPath.startsWith(item.href));
 
 <div class="relative group" id="dropdown-container">
     <button
-        class={`px-3 py-2 text-sm font-medium ${
+        class={`px-3 py-[7px] text-sm font-medium ${
             isActive
                 ? "bg-[#ECECEC] text-[#111] "
-                : "text-gray-600 hover:bg-[#F5F5F5] hover:text-[#111]"
+                : "bg-[#f5f5f5] text-[#111]"
         }`}
     >
         {name}

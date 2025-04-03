@@ -20,19 +20,19 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 const images = [
 	{
 		src: "/images/graduacion.jpg",
-		alt: "",
+		alt: "Estudiantes de la UPC, recordando buenos momentos en su graduación",
 	},
 	{
-		src: "/images/evento_mujer.jpg",
-		alt: "",
+		src: "/images/comunidad_estudiantil.jpg",
+		alt: "Estudiantes de la UPC, felices y sonriendo",
 	},
 	{
 		src: "/images/lab_biotecnologia.jpg",
-		alt: "",
+		alt: "Maestra enseñando a sus alumnos",
 	},
 	{
 		src: "/images/alumno_feliz.jpg",
-		alt: "",
+		alt: "Alumno en el salón de clases",
 	},
 ];
 
@@ -43,7 +43,7 @@ export const prerender = true;
 
 <BaseLayout>
 	<main class="bg-neutral-50">
-		<MainCarousel client:load video="trailer.mp4" images={images} />
+		<MainCarousel client:load images={images} />
 
 		<section
 			id="carreras"
@@ -276,6 +276,7 @@ export const prerender = true;
 					/>
 					<Image
 						src="/images/convenios/Lafayette.png"
+						class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
 						alt="Universidad Lafayette"
 						height={60}
 						width={130}

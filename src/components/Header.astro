@@ -10,7 +10,7 @@ import HeaderDropdown from "./HeaderDropdown.astro";
 
 // Global Data and SEO
 import SingleMenu from "./nagivation/SingleMenu";
-import { SITE_TITLE, navigation } from "@/const";
+import { SITE_TITLE, navigation, IS } from "@/const";
 
 const currentPath = Astro.url.pathname;
 ---
@@ -111,7 +111,7 @@ const currentPath = Astro.url.pathname;
 
             <!-- Menú principal -->
             <div class="hidden md:block">
-                <div class="ml-10 flex items-baseline space-x-4 select-none">
+                <div class="ml-10 flex items-baseline gap-8 select-none">
                     {
                         navigation.map((item) =>
                             item.submenu ? (
@@ -170,13 +170,33 @@ const currentPath = Astro.url.pathname;
             <p class="px-4 text-sm text-neutral-500 pb-2">Principales</p>
             {
                 navigation
-                .filter((item) => !item.submenu)
-                .map((item) => (
+                    .filter((item) => !item.submenu)
+                    .map((item) => (
+                        <a
+                            href={item.href}
+                            transition:name={item.name}
+                            class:list={[
+                                "py-[10px] px-4 text-4xl font-medium",
+                                currentPath === item.href
+                                    ? "text-[#111]"
+                                    : "text-neutral-500 hover:text-[#111]",
+                            ]}
+                        >
+                            {item.name}
+                        </a>
+                    ))
+            }
+        </div>
+
+        <!-- SIIUPC -->
+        <div class="md:col-span-2 flex flex-col px-4 py-5">
+            <p class="px-4 text-sm text-neutral-500 pb-2">SIIUPC</p>
+            {
+                IS.map((item) => (
                     <a
                         href={item.href}
-                        transition:name={item.name}
                         class:list={[
-                            "py-[10px] px-4 text-4xl font-medium",
+                            "py-2 px-4 text-2xl",
                             currentPath === item.href
                                 ? "text-[#111]"
                                 : "text-neutral-500 hover:text-[#111]",
@@ -192,28 +212,28 @@ const currentPath = Astro.url.pathname;
         <div class="block md:hidden mt-8 mx-8">
             {
                 navigation
-                .filter((item) => item.submenu)
-                .map((item) => (
-                    <div class="mb-4">
-                        <p class="text-sm text-neutral-700">{item.name}</p>
-                        <div class="flex flex-col">
-                            {item.submenu &&
-                                item.submenu.map((subitem) => (
-                                    <a
-                                        href={subitem.href}
-                                        class:list={[
-                                            "py-2 text-2xl",
-                                            currentPath === subitem.href
-                                                ? "text-[#111]"
-                                                : "text-neutral-500 hover:text-[#111]",
-                                        ]}
-                                    >
-                                        {subitem.name}
-                                    </a>
-                                ))}
+                    .filter((item) => item.submenu)
+                    .map((item) => (
+                        <div class="mb-4">
+                            <p class="text-sm text-neutral-700">{item.name}</p>
+                            <div class="flex flex-col">
+                                {item.submenu &&
+                                    item.submenu.map((subitem) => (
+                                        <a
+                                            href={subitem.href}
+                                            class:list={[
+                                                "py-2 text-2xl",
+                                                currentPath === subitem.href
+                                                    ? "text-[#111]"
+                                                    : "text-neutral-500 hover:text-[#111]",
+                                            ]}
+                                        >
+                                            {subitem.name}
+                                        </a>
+                                    ))}
+                            </div>
                         </div>
-                    </div>
-                ))
+                    ))
             }
         </div>
     </div>
