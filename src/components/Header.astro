@@ -189,7 +189,7 @@ const currentPath = Astro.url.pathname;
         </div>
 
         <!-- SIIUPC -->
-        <div class="md:col-span-2 flex flex-col px-4 py-5">
+        <div class="md:col-span-2 flex flex-col px-4 pt-8">
             <p class="px-4 text-sm text-neutral-500 pb-2">SIIUPC</p>
             {
                 IS.map((item) => (
@@ -209,7 +209,7 @@ const currentPath = Astro.url.pathname;
         </div>
 
         <!-- En móvil, los submenus también se muestran debajo -->
-        <div class="block md:hidden mt-8 mx-8">
+        <div class="block md:hidden mt-6 mx-8">
             {
                 navigation
                     .filter((item) => item.submenu)
