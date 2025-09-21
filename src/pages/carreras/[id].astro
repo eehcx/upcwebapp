@@ -1,8 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import DegreesLayout from "@/layouts/DegreesLayout.astro";
-import Footer from "@/components/common/Footer.astro";
-import InformationCarousel from "@/components/degrees/InformationCarousel";
+import InformationCarousel from "@/components/sections/degrees/InformationCarousel";
 import PDFViewer from "@/components/common/PDFViewer.astro";
 
 import {
@@ -100,5 +99,4 @@ export const prerender = true;
             </div>
         </section>
     </main>
-    <Footer />
 </DegreesLayout>

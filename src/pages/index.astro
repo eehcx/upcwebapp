@@ -11,27 +11,26 @@ import {
 } from "lucide-react";
 import { Image } from "astro:assets";
 
-import MainCarousel from "@/components/home/MainCarousel.tsx";
-import BlogCard from "@/components/home/BlogCard.astro";
-import Footer from "@/components/common/Footer.astro";
-import LinkButton from "@/components/home/education/LinkButton.astro";
+import MainCarousel from "@/components/sections/home/MainCarousel";
+import BlogCard from "@/components/sections/home/BlogCard.astro";
+import LinkButton from "@/components/sections/home/education/LinkButton.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const images = [
 	{
-		src: "/images/graduacion.jpg",
+		src: "/images/graduacion.webp",
 		alt: "Estudiantes de la UPC, recordando buenos momentos en su graduación",
 	},
 	{
-		src: "/images/comunidad_estudiantil.jpg",
+		src: "/images/comunidad_estudiantil.webp",
 		alt: "Estudiantes de la UPC, felices y sonriendo",
 	},
 	{
-		src: "/images/lab_biotecnologia.jpg",
+		src: "/images/lab_biotecnologia.webp",
 		alt: "Maestra enseñando a sus alumnos",
 	},
 	{
-		src: "/images/alumno_feliz.jpg",
+		src: "/images/alumno_feliz.webp",
 		alt: "Alumno en el salón de clases",
 	},
 ];
@@ -111,7 +110,7 @@ export const prerender = true;
 			>
 				<div>
 					<Image
-						src="/images/alumno_explicando.jpg"
+						src="/images/alumno_explicando.webp"
 						height={390}
 						width={590}
 						alt="Estudiante de mecanica automotriz"
@@ -314,5 +313,4 @@ export const prerender = true;
 			</div>
 		</section>
 	</main>
-	<Footer />
 </BaseLayout>
