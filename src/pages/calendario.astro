@@ -1,0 +1,48 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+    <main class="flex flex-col w-full min-h-screen">
+        <!-- Sección principal: dos columnas PDF + texto -->
+        <section class="max-w-6xl mx-auto flex flex-col lg:flex-row items-stretch gap-8 pt-12 pb-48 px-4">
+
+            <!-- Columna izquierda: PDF ocupa todo el alto -->
+            <div class="lg:w-1/2 w-full flex flex-col bg-white shadow-md">
+                <iframe
+                    src="/docs/calendario.pdf"
+                    class="w-full flex-1 border-none"
+                    title="Calendario Escolar PDF"
+                ></iframe>
+            </div>
+
+            <!-- Columna derecha: Texto descriptivo -->
+            <div class="lg:w-1/2 w-full flex flex-col justify-between prose prose-xl mx-auto prose-headings:text-2xl prose-headings:text-neutral-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-p:text-lg prose-li:text-lg">
+                <div>
+                    <h1>Calendario Escolar 2025-2026</h1>
+                    <p>
+                        Bienvenido al calendario oficial de la Universidad Politécnica del Centro. Aquí encontrarás todas las fechas clave del año escolar, organizado por cuatrimestres, para que tengas claro cuándo empiezan y terminan las clases, tus periodos de inscripción, exámenes y recesos. Revisa el calendario y planifica tu año académico sin contratiempos.
+                    </p>
+                    <h2>Recomendaciones para aprovecharlo</h2>
+                    <ul>
+                        <li>Identifica los periodos de clases, parciales y finales para organizar tu estudio y actividades.</li>
+                        <li>Algunos cambios pueden ocurrir a lo largo del año, mantente atento a los avisos oficiales.</li>
+                    </ul>
+                </div>
+
+                <!-- Botón de descarga siempre al final de la columna -->
+                <div class="mt-6">
+                    <a
+                        href="/docs/calendario.pdf"
+                        download
+                        class="px-6 py-3 text-base bg-red-600 text-white font-semibold hover:bg-red-700 transition no-underline"
+                        title="Calendario escolar 2025-2026"
+                    >
+                        Descargar calendario
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</BaseLayout>

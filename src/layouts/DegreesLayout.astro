@@ -3,16 +3,13 @@
 import "@/index.css";
 import { ClientRouter } from "astro:transitions";
 // Local imports
-import { SITE_TITLE } from "@/const";
-import Header from "@/components/Header.astro";
-import TopAlert from "@/components/TopAlert.astro";
+import { SITE_TITLE } from "@/shared/data";
+import type {MetaHead} from "../shared/types";
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/layout/Footer.astro";
+import TopAlert from "@/components/layout/TopAlert.astro";
 
-type Props = {
-    title: string;
-    description: string;
-};
-
-const { title, description }: Props = Astro.props;
+const { title, description } = Astro.props as MetaHead;
 
 let alert = null;
 
@@ -52,5 +49,6 @@ try {
         {alert && <TopAlert>{alert.description}</TopAlert>}
         <Header />
         <slot />
+        <Footer />
     </body>
 </html>

@@ -1,0 +1,34 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BlogCard from "@/features/boletines/BlogCard.astro";
+
+import {PostService} from "../../core/services";
+
+export const prerender = false;
+
+const service = new PostService();
+const posts = await service.getPublishedPosts();
+---
+
+<BaseLayout>
+    <main class="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-56">
+        <h1 class="text-3xl font-bold text-neutral-900 mb-8">Boletines</h1>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) => (
+                <BlogCard
+                    date={new Date(post.publishedAt || post.createdAt).toLocaleDateString("es-MX", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric"
+                    })}
+                    category="Boletín informativo"
+                    title={post.title}
+                    description={post.excerpt}
+                    authorName={post.authorName}
+                    link={`/boletines/${post.slug}`}
+                />
+            ))}
+        </div>
+    </main>
+</BaseLayout>

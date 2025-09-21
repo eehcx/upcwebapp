@@ -4,7 +4,7 @@ subtitle: Mecánica Automotriz
 description: Manejo, análisis, diseño implementación y evaluación de proyectos que requieran el uso de sistemas electrónicos y de telecomunicaciones.
 duration: 3 años
 modality: Presencial
-image: mecanica.jpg
+image: mecanica.webp
 pdf: Mecanica_automotriz.pdf
 ---
 
