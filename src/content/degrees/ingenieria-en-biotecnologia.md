@@ -4,7 +4,7 @@ subtitle: Biotecnología
 description: Diseñar, desarrollar e innovar múltiples procesos o productos que pueden ser aplicados en diversos sectores productivos y ambientales.
 duration: 3 años
 modality: Presencial
-image: biotecnologia.jpg
+image: biotecnologia.webp
 pdf: Biotecnologia.pdf
 ---
 

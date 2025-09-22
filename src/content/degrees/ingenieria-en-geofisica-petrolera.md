@@ -4,7 +4,7 @@ subtitle: Geofisica Petrolera
 description: Manejo, análisis, diseño implementación y evaluación de proyectos que requieran el uso de sistemas electrónicos y de telecomunicaciones.
 duration: 3 años
 modality: Presencial
-image: geofisica.jpg
+image: geofisica.webp
 pdf: Geofisica_Petrolera.pdf
 ---
 
