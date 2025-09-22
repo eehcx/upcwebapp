@@ -1,3 +1,5 @@
+"use client";
+
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarTrigger } from "@/components/ui/menubar";
 
 import { IS } from "@/shared/data";
