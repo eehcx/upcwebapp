@@ -81,7 +81,7 @@ const htmlContent = marked.parse(post.content);
 
             <!-- Breadcrumbs en esquina inferior derecha -->
             <div class="absolute bottom-4 right-4 max-w-[50%] sm:max-w-none">
-                <Breadcrumb className="px-2 sm:px-3 py-1 text-xs sm:text-sm">
+                <Breadcrumb className="px-2 sm:px-3 py-1 text-xs sm:text-sm" client:load>
                     <BreadcrumbList className="flex-nowrap">
                         <BreadcrumbItem>
                             <BreadcrumbLink href="/" className="whitespace-nowrap">Inicio</BreadcrumbLink>
