@@ -12,6 +12,7 @@
     "@astrojs/react": "^4.1.6",
     "@astrojs/tailwind": "^5.1.5",
     "@astrojs/ts-plugin": "^1.10.4",
+    "@astrojs/vercel": "^8.2.8",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-menubar": "^1.1.5",
     "@radix-ui/react-separator": "^1.1.1",
