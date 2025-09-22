@@ -1,0 +1,41 @@
+---
+// Global imports
+import "@/index.css";
+import { ClientRouter } from "astro:transitions";
+// Local imports
+import { SITE_TITLE } from "@/shared/data";
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/layout/Footer.astro";
+import BaseHead from "@/components/common/BaseHead.astro";
+
+import type {MetaHead} from "../shared/types";
+
+const { title, description } = Astro.props as MetaHead;
+
+---
+
+<!doctype html>
+<html lang="es-MX">
+    <head>
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width" />
+            <link rel="icon" type="image/svg+xml" href="/logo.png" />
+            <meta name="generator" content={Astro.generator} />
+            <title>{`${title || SITE_TITLE} | ${SITE_TITLE}`}</title>
+            <meta name="title" content={title || SITE_TITLE} />
+            <meta name="description" content={description} />
+            <!-- Open Graph meta tags -->
+            <meta property="og:title" content={title || SITE_TITLE} />
+            <meta property="og:description" content={description} />
+            <meta property="og:url" content={Astro.site} />
+
+            <ClientRouter />
+        </head>
+    </head>
+    <body class="overflow-x-hidden">
+        <Header />
+        <slot />
+        <Footer />
+    </body>
+</html>

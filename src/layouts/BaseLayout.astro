@@ -2,10 +2,11 @@
 // Global imports
 import "@/index.css";
 // Local imports
-import { metadata } from "@/data/metadata";
-import Header from "@/components/Header.astro";
-import BaseHead from "@/components/BaseHead.astro";
-import TopAlert from "@/components/TopAlert.astro";
+import { metadata } from "@/shared/data/metadata";
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/layout/Footer.astro";
+import BaseHead from "@/components/common/BaseHead.astro";
+import TopAlert from "@/components/layout/TopAlert.astro";
 
 const currentPath = Astro.url.pathname;
 const pageMetadata = metadata[currentPath] || {};
@@ -56,5 +57,6 @@ try {
 
 		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>

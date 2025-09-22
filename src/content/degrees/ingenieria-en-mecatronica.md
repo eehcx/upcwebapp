@@ -4,7 +4,7 @@ subtitle: Mecatrónica
 description: Optimiza procesos de producción, bien sea de forma manual, semiautomática o automática. 
 duration: 3 años
 modality: Presencial
-image: mecatronica.jpg
+image: mecatronica.webp
 pdf: Mecatronica.pdf
 ---
 
