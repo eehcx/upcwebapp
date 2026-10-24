@@ -7,7 +7,7 @@ description: >-
 duration: 10 cuatrimestres
 modality: Presencial
 image: software.webp
-pdf: IngEnTI(SOFTWARE).pdf
+pdf: plan-estudios-ti-innovacion-digital-2024.pdf
 studyPlan:
   validFrom: septiembre de 2024
   summary: >-
