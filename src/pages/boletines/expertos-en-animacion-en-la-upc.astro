@@ -1,0 +1,136 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import { ArrowLeft, ArrowRight, CalendarDays, Clock3 } from "lucide-react";
+import readingTime from "reading-time";
+
+// This single static example takes precedence over the API-backed [slug] route.
+export const prerender = true;
+
+const title = "¡Expertos en animación en la UPC!";
+const description = "Del primer boceto a la pantalla: una mirada al proceso creativo detrás de los cortometrajes animados, junto a la comunidad de Animación y Efectos Visuales.";
+const sections = [
+    {
+        id: "ideas-que-cobran-vida",
+        title: "Ideas que cobran vida",
+        paragraphs: [
+            "Una historia puede comenzar con un dibujo en una libreta, una pregunta o una experiencia cotidiana. Convertir esa primera idea en un cortometraje requiere imaginación, observación y un proceso que conecta muchas disciplinas.",
+            "Julio César Hernández Méndez y Saúl Israel Landero García comparten con estudiantes de la UPC la conferencia “El proceso creativo en la realización de cortometrajes animados”. Un espacio para acercarse a las decisiones que dan forma a una historia y descubrir el trabajo que hay detrás de cada escena.",
+            "Para los Papillones Rojos de Ingeniería en Animación y Efectos Visuales, este encuentro representa una oportunidad para conectar lo que aprenden en el aula con los retos de una producción: comunicar una emoción, construir un personaje y encontrar una identidad visual propia.",
+        ],
+    },
+    {
+        id: "del-boceto-a-la-pantalla",
+        title: "Del boceto a la pantalla",
+        paragraphs: [
+            "Antes de animar, hay una historia que contar. La preproducción permite explorar el argumento, conocer a los personajes y definir el ambiente en el que se mueven. Los bocetos y el guion gráfico ayudan a ordenar las ideas y a visualizar cómo se relacionan las escenas.",
+            "Después, el movimiento, el ritmo, el color y el sonido trabajan juntos. Cada elección cambia la manera en que el público percibe una secuencia. Una pausa puede crear expectativa; una expresión sencilla puede decir más que un diálogo completo.",
+            "El proceso también incluye revisar y volver a intentar. Compartir avances, escuchar otras miradas y hacer ajustes son parte de construir una pieza que comunique con claridad. La creatividad se fortalece cuando existe espacio para experimentar.",
+        ],
+    },
+    {
+        id: "crear-en-comunidad",
+        title: "Crear también es colaborar",
+        paragraphs: [
+            "Un cortometraje reúne distintas formas de mirar. Escritura, diseño de personajes, modelado, animación, iluminación y sonido encuentran un punto de conexión en el trabajo en equipo. Aprender a explicar una idea y recibir retroalimentación es tan valioso como dominar una herramienta.",
+            "Acercar experiencias profesionales a la comunidad universitaria abre conversaciones sobre los caminos que pueden seguir los estudiantes. También invita a reconocer que los proyectos pequeños son una oportunidad para practicar, descubrir intereses y comenzar a construir un portafolio.",
+            "La invitación es a seguir creando: observar el entorno, reunir referencias y transformar una idea propia en una historia que merezca compartirse. El siguiente personaje, escenario o cortometraje puede comenzar hoy, dentro de nuestra comunidad.",
+        ],
+    },
+];
+const minutes = Math.ceil(readingTime([description, ...sections.flatMap(section => section.paragraphs)].join(" ")).minutes);
+const imageSource = "https://unsplash.com/photos/artist-creating-digital-art-on-a-desk-lwiESfzrVM4";
+---
+
+<BlogLayout title={title} description={description}>
+    <main class="bg-neutral-50">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-8 sm:pt-12 pb-20 sm:pb-28">
+            <nav aria-label="Ruta de navegación" class="flex flex-wrap items-center gap-2 text-sm text-neutral-500">
+                <a href="/" class="hover:text-red-600">Inicio</a>
+                <span aria-hidden="true">/</span>
+                <a href="/#boletines" class="hover:text-red-600">Boletines</a>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page" class="text-neutral-900">Animación y Efectos Visuales</span>
+            </nav>
+
+            <article class="mt-10 sm:mt-14">
+                <header class="max-w-4xl">
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium">
+                        <a href="/carreras/ingenieria-en-animacion-y-efectos-visuales" class="text-red-600 hover:underline">Animación y Efectos Visuales</a>
+                        <span class="text-neutral-400" aria-hidden="true">·</span>
+                        <span class="text-neutral-500">Contenido de ejemplo</span>
+                    </div>
+                    <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-neutral-950 leading-[1.1]">{title}</h1>
+                    <p class="mt-6 max-w-3xl text-lg sm:text-xl leading-relaxed text-neutral-600">{description}</p>
+
+                    <div class="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between border-t border-neutral-200 pt-6">
+                        <div class="flex items-center gap-3">
+                            <span aria-hidden="true" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-red-600 text-sm font-semibold text-white">AG</span>
+                            <div class="text-sm leading-6">
+                                <p class="font-semibold text-neutral-900">Ana Karen García</p>
+                                <p class="text-neutral-500">Departamento de Difusión</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-x-5 gap-y-2 text-xs sm:text-sm text-neutral-500">
+                            <span class="inline-flex items-center gap-2"><CalendarDays size={16} aria-hidden="true" /><time datetime="2020-03-16">16 de marzo de 2020</time></span>
+                            <span class="inline-flex items-center gap-2"><Clock3 size={16} aria-hidden="true" />{minutes} min de lectura</span>
+                        </div>
+                    </div>
+                </header>
+
+                <figure class="mt-10 sm:mt-12">
+                    <img
+                        src="https://images.unsplash.com/photo-1744686909443-eb72a54de998?auto=format&amp;fit=crop&amp;w=1800&amp;q=85"
+                        alt="Artista trabajando en una ilustración digital con una tableta gráfica y referencias sobre su escritorio"
+                        width="1800"
+                        height="1000"
+                        fetchpriority="high"
+                        class="w-full aspect-[4/3] sm:aspect-[2/1] object-cover"
+                    />
+                    <figcaption class="mt-3 flex flex-wrap justify-between gap-2 text-xs leading-5 text-neutral-500">
+                        <span>La creatividad y la tecnología se encuentran en cada etapa de una producción. Fotografía ilustrativa.</span>
+                        <a href={imageSource} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-neutral-900">TourBox / Unsplash</a>
+                    </figcaption>
+                </figure>
+
+                <div class="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_260px] gap-12 lg:gap-20">
+                    <div class="min-w-0 max-w-prose text-xl">
+                        {sections.map((section, index) => (
+                            <section id={section.id} aria-labelledby={`${section.id}-title`} class:list={["scroll-mt-28", index > 0 && "mt-12"]}>
+                                <h2 id={`${section.id}-title`} class="text-2xl font-semibold tracking-tight text-neutral-900">{section.title}</h2>
+                                {section.paragraphs.map(paragraph => <p class="mt-5 text-[17px] leading-8 text-gray-700">{paragraph}</p>)}
+                                {index === 1 && (
+                                    <aside class="mt-8 border-l-4 border-red-600 bg-white px-6 py-5">
+                                        <p class="text-xs font-semibold uppercase tracking-wider text-red-600">Una idea para llevarte</p>
+                                        <p class="mt-3 text-xl leading-8 font-medium text-neutral-900">El primer paso de una gran historia es darle espacio a una idea.</p>
+                                    </aside>
+                                )}
+                            </section>
+                        ))}
+                        <footer class="mt-12 border-t border-neutral-200 pt-6">
+                            <p class="text-xs leading-6 text-neutral-500">Ejemplo visual basado en el boletín de portada. El texto se amplió con fines de demostración y la fotografía es ilustrativa.</p>
+                            <a href="/#boletines" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-neutral-900 hover:text-red-600"><ArrowLeft size={18} aria-hidden="true" /> Volver a boletines</a>
+                        </footer>
+                    </div>
+
+                    <aside aria-label="Información del boletín" class="min-w-0">
+                        <div class="lg:sticky lg:top-28">
+                            <nav aria-label="Contenido del artículo" class="border-t-2 border-neutral-900 pt-5">
+                                <h2 class="text-sm font-semibold text-neutral-900">En este boletín</h2>
+                                <ol class="mt-5 space-y-4 text-sm leading-6 text-neutral-600">
+                                    {sections.map((section, index) => <li><a href={`#${section.id}`} class="flex gap-3 hover:text-red-600"><span aria-hidden="true" class="text-red-600">0{index + 1}</span>{section.title}</a></li>)}
+                                </ol>
+                            </nav>
+                            <div class="mt-10 bg-red-600 p-6 text-white">
+                                <p class="text-xs font-medium text-red-100">Descubre tu próxima historia</p>
+                                <h2 class="mt-3 text-xl font-semibold leading-7">Dale vida a tus ideas en la UPC.</h2>
+                                <p class="mt-4 text-sm leading-6 text-red-50">Conoce Ingeniería en Animación y Efectos Visuales y explora tu lado creativo.</p>
+                                <a href="/carreras/ingenieria-en-animacion-y-efectos-visuales" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold hover:underline">Conocer la carrera <ArrowRight size={18} aria-hidden="true" /></a>
+                            </div>
+                            <p class="mt-6 text-xs leading-6 text-neutral-500">Historias, experiencias y talento de nuestra comunidad universitaria. #PapillonesRojos</p>
+                        </div>
+                    </aside>
+                </div>
+            </article>
+        </div>
+    </main>
+</BlogLayout>
