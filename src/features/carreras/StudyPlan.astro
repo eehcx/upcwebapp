@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Download } from "lucide-react";
+
+interface Props {
+    plan: NonNullable<CollectionEntry<"degrees">["data"]["studyPlan"]>;
+    duration: string;
+    pdf: string;
+}
+
+const { plan, duration, pdf } = Astro.props;
+const totalHours = plan.cycles.reduce((total, cycle) => total + cycle.terms.reduce(
+    (hours, term) => hours + term.subjects.reduce((sum, subject) => sum + subject.hours, 0), 0
+), 0);
+---
+
+<section id="plan-estudios" aria-labelledby="plan-estudios-title" class="max-w-prose mx-auto mt-16 scroll-mt-28 text-xl text-gray-700">
+    <h2 id="plan-estudios-title" class="text-2xl font-bold text-neutral-900">Plan de estudios</h2>
+    <p class="mt-4 text-lg">Vigente a partir de {plan.validFrom}.</p>
+    <p class="mt-2 text-lg">{duration} · {plan.cycles.length} ciclos de formación · {totalHours.toLocaleString("es-MX")} horas</p>
+    <p class="mt-4 text-lg">Consulta las asignaturas y horas de cada cuatrimestre.</p>
+
+    {plan.cycles.map((cycle) => (
+        <div class="mt-10">
+            <h3 class="text-xl font-semibold text-neutral-900">{cycle.title}</h3>
+            <p class="mt-3 mb-4 text-lg">{cycle.description}</p>
+            {cycle.terms.map((term) => (
+                <details class="group border-b border-neutral-200">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-base font-medium text-neutral-900 hover:text-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-600 [&::-webkit-details-marker]:hidden">
+                        <span>{term.title}</span>
+                        <span aria-hidden="true" class="shrink-0 text-red-600 transition-transform group-open:rotate-45">+</span>
+                    </summary>
+                    <table class="w-full mb-5 text-sm sm:text-base">
+                        <caption class="sr-only">Asignaturas y horas del {term.title.toLowerCase()}</caption>
+                        <thead class="bg-neutral-100 text-neutral-900">
+                            <tr><th scope="col" class="p-3 text-left font-semibold">Asignatura o actividad</th><th scope="col" class="p-3 text-right font-semibold">Horas</th></tr>
+                        </thead>
+                        <tbody>
+                            {term.subjects.map((subject) => (
+                                <tr class="border-b border-neutral-100"><th scope="row" class="p-3 text-left font-normal">{subject.name}</th><td class="p-3 text-right align-top">{subject.hours}</td></tr>
+                            ))}
+                        </tbody>
+                        <tfoot class="font-semibold text-neutral-900">
+                            <tr><th scope="row" class="p-3 text-left">Total de horas</th><td class="p-3 text-right">{term.subjects.reduce((sum, subject) => sum + subject.hours, 0)}</td></tr>
+                        </tfoot>
+                    </table>
+                </details>
+            ))}
+        </div>
+    ))}
+
+    <p class="mt-6 text-sm">El mapa curricular no especifica los contenidos de las optativas. Consulta el documento oficial para conocer las competencias completas.</p>
+    <a href={`/docs/${encodeURIComponent(pdf)}`} download class="inline-flex items-center gap-3 mt-6 px-5 py-3 bg-red-600 text-base text-white font-semibold hover:bg-red-700 transition-colors">
+        <Download size={20} aria-hidden="true" /> Descargar mapa curricular
+    </a>
+</section>

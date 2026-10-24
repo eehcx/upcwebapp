@@ -9,6 +9,21 @@ const degreesCollection = defineCollection({
         modality: z.string(),
         image: z.string(),
         pdf: z.string(),
+        studyPlan: z.object({
+            validFrom: z.string(),
+            summary: z.string(),
+            cycles: z.array(z.object({
+                title: z.string(),
+                description: z.string(),
+                terms: z.array(z.object({
+                    title: z.string(),
+                    subjects: z.array(z.object({
+                        name: z.string(),
+                        hours: z.number().int().positive(),
+                    })).min(1),
+                })).min(1),
+            })).min(1),
+        }).optional(),
     })
 })
 
