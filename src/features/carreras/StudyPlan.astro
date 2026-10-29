@@ -16,9 +16,14 @@ const totalHours = plan.cycles.reduce((total, cycle) => total + cycle.terms.redu
 
 <section id="plan-estudios" aria-labelledby="plan-estudios-title" class="max-w-prose mx-auto mt-16 scroll-mt-28 text-xl text-gray-700">
     <h2 id="plan-estudios-title" class="text-2xl font-bold text-neutral-900">Plan de estudios</h2>
-    <p class="mt-4 text-lg">Vigente a partir de {plan.validFrom}.</p>
+    <p class="mt-4 text-lg">Vigente a partir de <strong>{plan.validFrom}.</strong></p>
     <p class="mt-2 text-lg">{duration} · {plan.cycles.length} ciclos de formación · {totalHours.toLocaleString("es-MX")} horas</p>
     <p class="mt-4 text-lg">Consulta las asignaturas y horas de cada cuatrimestre.</p>
+
+    <a href={`/docs/${encodeURIComponent(pdf)}`} download class="inline-flex items-center gap-3 w-full mt-6 px-5 py-3 bg-red-600 text-base text-white font-semibold hover:bg-red-700 transition-colors">
+        <Download size={20} aria-hidden="true" /> Descargar mapa curricular
+    </a>
+    <p class="mt-6 text-sm">Consulta el mapa curricular oficial para conocer las competencias completas de cada ciclo de formación.</p>
 
     {plan.cycles.map((cycle) => (
         <div class="mt-10">
@@ -48,9 +53,4 @@ const totalHours = plan.cycles.reduce((total, cycle) => total + cycle.terms.redu
             ))}
         </div>
     ))}
-
-    <p class="mt-6 text-sm">Consulta el mapa curricular oficial para conocer las competencias completas de cada ciclo de formación.</p>
-    <a href={`/docs/${encodeURIComponent(pdf)}`} download class="inline-flex items-center gap-3 mt-6 px-5 py-3 bg-red-600 text-base text-white font-semibold hover:bg-red-700 transition-colors">
-        <Download size={20} aria-hidden="true" /> Descargar mapa curricular
-    </a>
 </section>
