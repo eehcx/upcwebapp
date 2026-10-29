@@ -9,12 +9,14 @@ function buildQuery(params?: Record<string, any>): string {
 
 export async function httpGet<T>(path: string, params?: Record<string, any>): Promise<T> {
     const url = `${BASE_URL}${path}${buildQuery(params)}`;
-    const res = await fetch(url, {
-        headers: {
-            Authorization: `Bearer ${API_KEY}`,
-            "Content-Type": "application/json",
-        },
-    });
+    const res = await fetch(url,
+        {
+            headers: {
+                Authorization: `Bearer ${API_KEY}`,
+                "Content-Type": "application/json",
+            },
+        }
+    );
 
     if (!res.ok) {
         const text = await res.text(); // cuerpo de la respuesta
