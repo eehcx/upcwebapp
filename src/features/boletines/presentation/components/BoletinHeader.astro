@@ -1,0 +1,65 @@
+---
+import { CalendarDays, Clock3 } from "lucide-react";
+import type { BoletinAuthorView } from "@/features/boletines/service";
+import BoletinAuthorBadge from "./BoletinAuthorBadge.astro";
+
+interface BoletinHeaderProps {
+    title: string;
+    excerpt: string;
+    categoryName: string | null;
+    author: BoletinAuthorView | null;
+    publishedIso: string;
+    publishedLabel: string;
+    readingTimeText: string;
+}
+
+const {
+    title,
+    excerpt,
+    categoryName,
+    author,
+    publishedIso,
+    publishedLabel,
+    readingTimeText
+} = Astro.props as BoletinHeaderProps;
+---
+
+<header class="max-w-4xl">
+    {categoryName && (
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium">
+            <span class="text-red-600">{categoryName}</span>
+        </div>
+    )}
+
+    <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-neutral-950 leading-[1.1]">
+        {title}
+    </h1>
+
+    {excerpt && (
+        <p class="mt-6 max-w-3xl text-lg sm:text-xl leading-relaxed text-neutral-600">
+            {excerpt}
+        </p>
+    )}
+
+    <div class="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between border-t border-neutral-200 pt-6">
+        {author ? (
+            <BoletinAuthorBadge author={author} />
+        ) : (
+            <div class="text-sm leading-6">
+                <p class="font-semibold text-neutral-900">Comunidad UPC</p>
+                <p class="text-neutral-500">Departamento de Difusión</p>
+            </div>
+        )}
+
+        <div class="flex flex-wrap gap-x-5 gap-y-2 text-xs sm:text-sm text-neutral-500">
+            <span class="inline-flex items-center gap-2">
+                <CalendarDays size={16} aria-hidden="true" />
+                <time datetime={publishedIso}>{publishedLabel}</time>
+            </span>
+            <span class="inline-flex items-center gap-2">
+                <Clock3 size={16} aria-hidden="true" />
+                {readingTimeText}
+            </span>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,77 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import { ArrowLeft } from "lucide-react";
+import type { BoletinDetailView } from "@/features/boletines/service";
+import BoletinBreadcrumbs from "./BoletinBreadcrumbs.astro";
+import BoletinHeader from "./BoletinHeader.astro";
+import BoletinCover from "./BoletinCover.astro";
+import BoletinContent from "./BoletinContent.astro";
+import BoletinTableOfContents from "./BoletinTableOfContents.astro";
+import BoletinCta from "./BoletinCta.astro";
+
+interface BoletinDetailProps {
+    boletin: BoletinDetailView;
+    backHref?: string;
+    backLabel?: string;
+}
+
+const {
+    boletin,
+    backHref = "/boletines",
+    backLabel = "Volver a boletines"
+} = Astro.props as BoletinDetailProps;
+---
+
+<BlogLayout title={boletin.title} description={boletin.excerpt}>
+    <main class="bg-neutral-50">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 pt-8 sm:pt-12 pb-20 sm:pb-28">
+            <BoletinBreadcrumbs current={boletin.title} />
+
+            <article class="mt-10 sm:mt-14">
+                <BoletinHeader
+                    title={boletin.title}
+                    excerpt={boletin.excerpt}
+                    categoryName={boletin.categoryName}
+                    author={boletin.author}
+                    publishedIso={boletin.publishedIso}
+                    publishedLabel={boletin.publishedLabel}
+                    readingTimeText={boletin.readingTimeText}
+                />
+
+                {boletin.coverUrl && (
+                    <BoletinCover src={boletin.coverUrl} alt={boletin.title} />
+                )}
+
+                <div class="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_260px] gap-12 lg:gap-20">
+                    <div class="min-w-0 max-w-prose">
+                        <BoletinContent html={boletin.contentHtml} />
+
+                        <footer class="mt-12 border-t border-neutral-200 pt-6">
+                            <a
+                                href={backHref}
+                                class="inline-flex items-center gap-2 text-sm font-semibold text-neutral-900 hover:text-red-600"
+                            >
+                                <ArrowLeft size={18} aria-hidden="true" />
+                                {backLabel}
+                            </a>
+                        </footer>
+                    </div>
+
+                    <aside aria-label="Información del boletín" class="min-w-0">
+                        <div class="lg:sticky lg:top-28">
+                            {boletin.toc.length > 0 && (
+                                <BoletinTableOfContents items={boletin.toc} />
+                            )}
+
+                            <BoletinCta />
+
+                            <p class="mt-6 text-xs leading-6 text-neutral-500">
+                                Historias, experiencias y talento de nuestra comunidad universitaria. #PapillonesRojos
+                            </p>
+                        </div>
+                    </aside>
+                </div>
+            </article>
+        </div>
+    </main>
+</BlogLayout>

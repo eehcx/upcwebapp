@@ -1,0 +1,33 @@
+---
+import type { BoletinAuthorView } from "@/features/boletines/service";
+
+interface BoletinAuthorBadgeProps {
+    author: BoletinAuthorView;
+}
+
+const { author } = Astro.props as BoletinAuthorBadgeProps;
+---
+
+<div class="flex items-center gap-3">
+    {author.profilePhoto ? (
+        <img
+            src={author.profilePhoto}
+            alt={author.fullName}
+            width="44"
+            height="44"
+            loading="lazy"
+            class="h-11 w-11 shrink-0 rounded-full object-cover"
+        />
+    ) : (
+        <span
+            aria-hidden="true"
+            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-red-600 text-sm font-semibold text-white"
+        >
+            {author.initials}
+        </span>
+    )}
+    <div class="text-sm leading-6">
+        <p class="font-semibold text-neutral-900">{author.fullName}</p>
+        {author.position && <p class="text-neutral-500">{author.position}</p>}
+    </div>
+</div>
