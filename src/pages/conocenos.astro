@@ -1,0 +1,479 @@
+---
+import { ArrowDown, ArrowUpRight, Clock, MapPin, Phone } from "lucide-react";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { ChapterNav } from "@/features/conocenos/ChapterNav";
+import { Directory } from "@/features/conocenos/Directory";
+import {
+	CONTACT,
+	MILESTONES,
+	MISSION,
+	RECTOR,
+	SWITCHBOARD,
+	VALUES,
+	VALUES_INTRO,
+	VISION,
+	yearsSinceFounding,
+} from "@/features/conocenos/conocenos.data";
+
+export const prerender = true;
+
+const years = yearsSinceFounding();
+const pad = (n: number) => String(n).padStart(2, "0");
+const ringText = "Universidad Politécnica del Centro • Casa de los Papillones Rojos • ";
+---
+
+<BaseLayout
+	title="Conócenos"
+	description="Mensaje del rector, historia, misión, visión, valores y directorio de la Universidad Politécnica del Centro (UPC), casa de los Papillones Rojos en Tabasco."
+>
+	<main class="overflow-x-clip bg-upc-canvas text-upc-ink">
+		<!-- ============================ PORTADA ============================ -->
+		<header class="relative isolate flex min-h-[86vh] items-end overflow-hidden bg-upc-dark text-white">
+			<img
+				src="/images/conocenos/portada-edificio.webp"
+				alt="Edificio rojo de la Universidad Politécnica del Centro bajo el cielo de Tabasco"
+				width="2400"
+				height="1599"
+				fetchpriority="high"
+				decoding="async"
+				class="absolute inset-0 -z-10 h-full w-full object-cover motion-safe:animate-in motion-safe:zoom-in-110 motion-safe:duration-[2000ms] motion-safe:ease-out"
+			/>
+			<!-- Dos velos: uno lateral para la columna de texto y otro inferior para la ficha de datos -->
+			<div aria-hidden="true" class="absolute inset-0 -z-10 bg-gradient-to-r from-black/85 via-black/60 to-black/15"></div>
+			<div aria-hidden="true" class="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/25 to-black/30"></div>
+
+			<div class="mx-auto grid w-full max-w-7xl gap-10 px-4 pb-14 pt-32 sm:px-6 lg:grid-cols-12 lg:px-8 lg:pb-20">
+				<div class="lg:col-span-9">
+					<p class="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em] text-white motion-safe:animate-in motion-safe:fade-in motion-safe:duration-700">
+						<span class="h-px w-10 bg-upc-red-on-dark"></span>
+						Conócenos
+					</p>
+					<h1 class="mt-6 font-display text-[clamp(3rem,9vw,8.5rem)] font-bold leading-[0.92] tracking-tight [text-shadow:0_2px_30px_rgba(0,0,0,0.45)] motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-6 motion-safe:duration-1000">
+						Somos
+						<em class="block font-medium">Papillones <span class="underline decoration-upc-red decoration-[0.08em] underline-offset-[0.12em]">Rojos</span></em>
+					</h1>
+					<p class="mt-8 max-w-2xl text-lg leading-relaxed text-white/85 motion-safe:animate-in motion-safe:fade-in motion-safe:duration-1000 motion-safe:delay-300 motion-safe:fill-mode-both sm:text-xl">
+						Una universidad pública que desde 2008 forma ingenieras e ingenieros con sentido
+						humanista, en el corazón de Tabasco.
+					</p>
+				</div>
+
+				<!-- Sello circular giratorio (idea: shadcn studio about-us-page-17) -->
+				<div class="hidden items-end justify-end lg:col-span-3 lg:flex">
+					<div class="relative h-44 w-44 rounded-full bg-black/55 backdrop-blur-sm">
+						<svg viewBox="0 0 200 200" class="spin-slow absolute inset-0 h-full w-full" aria-hidden="true">
+							<defs>
+								<path id="ring" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"></path>
+							</defs>
+							<!-- textLength reparte el texto exactamente en la circunferencia (2π·78 ≈ 490) -->
+							<text class="fill-white text-[10.5px] font-semibold uppercase">
+								<textPath href="#ring" textLength="486" lengthAdjust="spacing">{ringText}</textPath>
+							</text>
+						</svg>
+						<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+							<span class="font-display text-5xl font-bold leading-none">{years}</span>
+							<span class="mt-1 text-[11px] font-bold uppercase tracking-[0.2em] text-white">años</span>
+						</div>
+					</div>
+				</div>
+
+				<dl class="grid grid-cols-2 gap-6 border-t border-white/20 pt-6 text-sm sm:grid-cols-4 lg:col-span-12">
+					<div>
+						<dt class="text-white/80">Fundación</dt>
+						<dd class="mt-1 font-display text-2xl">28 · V · 2008</dd>
+					</div>
+					<div>
+						<dt class="text-white/80">Campus</dt>
+						<dd class="mt-1 font-display text-2xl">Villa El Cielo</dd>
+					</div>
+					<div>
+						<dt class="text-white/80">Oferta</dt>
+						<dd class="mt-1 font-display text-2xl">7 ingenierías</dd>
+					</div>
+					<div>
+						<dt class="text-white/80">Modelo</dt>
+						<dd class="mt-1 font-display text-2xl">10 cuatrimestres</dd>
+					</div>
+				</dl>
+				<a
+					href="#mensaje"
+					class="inline-flex w-fit items-center gap-2 rounded text-sm font-semibold text-white/85 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white lg:col-span-12"
+				>
+					Comenzar a leer <ArrowDown className="h-4 w-4 motion-safe:animate-bounce" aria-hidden="true" />
+				</a>
+			</div>
+		</header>
+
+		<ChapterNav client:load />
+
+		<!-- ============================ 01 · MENSAJE ============================ -->
+		<section id="mensaje" aria-labelledby="mensaje-title" class="scroll-mt-36 py-20 sm:py-28">
+			<div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8">
+				<figure class="lg:col-span-5" data-reveal>
+					<div class="relative">
+						<div aria-hidden="true" class="absolute -left-3 -top-3 h-full w-full rounded-tl-[5rem] border border-upc-red/40"></div>
+						<!-- Patrón de puntos (idea: shadcn studio about-us-page-10) -->
+						<div
+							aria-hidden="true"
+							class="absolute -bottom-6 -right-6 h-32 w-32 bg-[radial-gradient(#c12329_1.5px,transparent_1.5px)] bg-[size:14px_14px] opacity-40"
+						></div>
+						<img
+							src="/images/conocenos/rector.webp"
+							alt={`${RECTOR.name}, ${RECTOR.role} de la UPC, en su oficina`}
+							width="1400"
+							height="939"
+							loading="lazy"
+							decoding="async"
+							class="relative aspect-[4/5] w-full rounded-tl-[5rem] object-cover object-center"
+						/>
+					</div>
+					<figcaption class="mt-5 border-l-2 border-upc-red pl-4 text-sm text-upc-body">
+						<span class="block font-semibold text-upc-ink">{RECTOR.name}</span>
+						{RECTOR.role} de la Universidad Politécnica del Centro
+					</figcaption>
+				</figure>
+
+				<article class="lg:col-span-7">
+					<p class="text-xs font-bold uppercase tracking-[0.3em] text-upc-red" data-reveal>01 — Mensaje del rector</p>
+					<h2
+						id="mensaje-title"
+						class="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
+						data-reveal
+						style="--reveal-delay:100ms"
+					>
+						Un faro de conocimiento, <em class="font-medium text-upc-red">un motor de cambio</em>
+					</h2>
+					<div class="mt-10 space-y-6 text-lg leading-relaxed text-upc-body" data-reveal style="--reveal-delay:200ms">
+						<p class="font-semibold text-upc-ink">{RECTOR.greeting}</p>
+						{RECTOR.paragraphs.map((p, i) => <p class={i === 0 ? "drop-cap" : undefined}>{p}</p>)}
+					</div>
+					<blockquote class="my-12 border-y border-upc-ink/15 py-8" data-reveal>
+						<p class="font-display text-3xl italic leading-snug text-upc-ink sm:text-4xl">
+							<span aria-hidden="true" class="mr-1 text-upc-red">“</span>{RECTOR.pullQuote}<span aria-hidden="true" class="text-upc-red">”</span>
+						</p>
+					</blockquote>
+					<div class="space-y-6 text-lg leading-relaxed text-upc-body" data-reveal>
+						{RECTOR.closing.map((p) => <p>{p}</p>)}
+						<p class="pt-4 italic">{RECTOR.signOff}</p>
+						<p>
+							<span class="block font-display text-2xl text-upc-ink">{RECTOR.name}</span>
+							<span class="text-sm font-semibold uppercase tracking-[0.2em] text-upc-red">{RECTOR.role}</span>
+						</p>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<!-- ============================ 02 · HISTORIA ============================ -->
+		<section id="historia" aria-labelledby="historia-title" class="scroll-mt-36 bg-upc-dark py-20 text-white sm:py-28">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div class="grid gap-8 lg:grid-cols-12">
+					<p class="text-xs font-bold uppercase tracking-[0.3em] text-upc-red-on-dark lg:col-span-12" data-reveal>02 — Historia</p>
+					<h2 id="historia-title" class="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:col-span-7 lg:text-6xl" data-reveal>
+						De tres ingenierías a <em class="font-medium text-upc-red-on-dark">una comunidad entera</em>
+					</h2>
+					<p class="self-end text-lg leading-relaxed text-white/75 lg:col-span-5" data-reveal style="--reveal-delay:150ms">
+						Empezamos en aulas prestadas en la colonia Casa Blanca. Hoy somos la casa de los
+						Papillones Rojos en Villa El Cielo.
+					</p>
+				</div>
+
+				<!-- Línea de tiempo que se dibuja con el scroll (idea: shadcn studio timeline-component-02) -->
+				<div id="timeline" class="relative mt-16 [--tl-progress:0] sm:mt-20">
+					<div aria-hidden="true" class="absolute bottom-0 left-[7px] top-0 w-px bg-white/15 md:left-1/2"></div>
+					<div
+						aria-hidden="true"
+						class="absolute left-[7px] top-0 w-px origin-top bg-upc-red-on-dark md:left-1/2"
+						style="height:100%;transform:scaleY(var(--tl-progress))"
+					></div>
+					<ol class="relative">
+					{
+						MILESTONES.map((m, i) => (
+							<li
+								class="group relative grid gap-4 pb-16 pl-10 last:pb-0 md:grid-cols-2 md:gap-16 md:pl-0"
+								data-reveal
+							>
+								<span
+									aria-hidden="true"
+									class="absolute left-0 top-3 h-[15px] w-[15px] rounded-full border-2 border-upc-red-on-dark bg-upc-dark transition-colors duration-500 group-[.is-visible]:bg-upc-red-on-dark md:left-1/2 md:-translate-x-1/2"
+								/>
+								<div class={i % 2 === 0 ? "md:pr-16 md:text-right" : "md:order-2 md:pl-16"}>
+									<p
+										class="text-outline font-display text-7xl font-bold leading-none transition-colors duration-700 [--outline-color:rgba(255,255,255,0.7)] group-[.is-visible]:text-upc-red-on-dark group-[.is-visible]:[--outline-color:transparent] sm:text-8xl"
+									>
+										{m.year}
+									</p>
+									<p class="mt-3 text-xs font-bold uppercase tracking-[0.25em] text-white/60">{m.date}</p>
+								</div>
+								<div class={i % 2 === 0 ? "md:pl-16 md:pt-4" : "md:order-1 md:pr-16 md:pt-4 md:text-right"}>
+									<h3 class="font-display text-2xl font-semibold sm:text-3xl">{m.title}</h3>
+									<p class="mt-3 text-base leading-relaxed text-white/75">{m.text}</p>
+								</div>
+							</li>
+						))
+					}
+					</ol>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================ 03 · MISIÓN Y VISIÓN ============================ -->
+		<section id="mision-vision" aria-labelledby="mision-title" class="scroll-mt-36 py-20 sm:py-28">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<p class="text-xs font-bold uppercase tracking-[0.3em] text-upc-red" data-reveal>03 — Misión y visión</p>
+				<h2 id="mision-title" class="sr-only">Misión y visión</h2>
+
+				<div class="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-16">
+					<div class="lg:col-span-7" data-reveal>
+						<p class="font-display text-[clamp(3.5rem,10vw,9rem)] font-bold leading-none tracking-tight text-upc-ink">Misión</p>
+						<p class="mt-6 font-display text-2xl leading-snug text-upc-ink sm:text-3xl">{MISSION}</p>
+					</div>
+					<figure class="lg:col-span-5 lg:pt-24" data-reveal style="--reveal-delay:150ms">
+						<img
+							src="/images/conocenos/papillones-muro.webp"
+							alt="Dos estudiantes con playera de los Papillones Rojos frente al muro de valores de la UPC"
+							width="1400"
+							height="931"
+							loading="lazy"
+							decoding="async"
+							class="aspect-[4/5] w-full rounded-tr-[5rem] object-cover"
+						/>
+						<figcaption class="mt-3 text-sm text-upc-body">Papillones Rojos frente al muro de valores.</figcaption>
+					</figure>
+				</div>
+
+				<div class="mt-20 grid gap-12 lg:grid-cols-12 lg:gap-16">
+					<figure class="order-2 lg:order-1 lg:col-span-5" data-reveal>
+						<img
+							src="/images/conocenos/papillon-escultura.webp"
+							alt="Escultura de Papillón, el cocodrilo rojo emblema de la UPC, en un pasillo del campus"
+							width="1400"
+							height="933"
+							loading="lazy"
+							decoding="async"
+							class="aspect-[4/3] w-full rounded-bl-[5rem] object-cover"
+						/>
+						<figcaption class="mt-3 text-sm text-upc-body">Papillón, emblema de nuestra comunidad.</figcaption>
+					</figure>
+					<div class="order-1 lg:order-2 lg:col-span-7" data-reveal style="--reveal-delay:150ms">
+						<p class="font-display text-[clamp(3.5rem,10vw,9rem)] font-bold italic leading-none tracking-tight text-upc-red">Visión</p>
+						<p class="mt-6 text-xl leading-relaxed text-upc-body">{VISION}</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Franja marquee con los valores (idea: shadcn studio announcement-banner-05) -->
+		<div class="marquee overflow-hidden bg-upc-red py-6 text-white" aria-hidden="true">
+			<div class="marquee-track flex w-max">
+				{
+					[0, 1].map(() => (
+						<div class="flex shrink-0 items-center">
+							{VALUES.map((v) => (
+								<span class="flex items-center font-display text-4xl italic sm:text-5xl">
+									<span class="px-8">{v.name}</span>
+									<span class="text-2xl not-italic text-white/60">✦</span>
+								</span>
+							))}
+						</div>
+					))
+				}
+			</div>
+		</div>
+
+		<!-- ============================ 04 · VALORES ============================ -->
+		<section id="valores" aria-labelledby="valores-title" class="scroll-mt-36 py-20 sm:py-28">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+					<div class="lg:col-span-6">
+						<p class="text-xs font-bold uppercase tracking-[0.3em] text-upc-red" data-reveal>04 — Valores</p>
+						<h2 id="valores-title" class="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl" data-reveal>
+							Los 11 picos <em class="font-medium text-upc-red">de la cola de Papillón</em>
+						</h2>
+						<p class="mt-8 text-lg leading-relaxed text-upc-body" data-reveal>{VALUES_INTRO}</p>
+					</div>
+					<figure class="lg:col-span-6" data-reveal style="--reveal-delay:150ms">
+						<img
+							src="/images/conocenos/muro-valores.webp"
+							alt="Muro con los valores institucionales de la UPC escritos junto a la cola roja de Papillón"
+							width="1800"
+							height="1189"
+							loading="lazy"
+							decoding="async"
+							class="aspect-[3/2] w-full rounded-tl-[5rem] object-cover"
+						/>
+					</figure>
+				</div>
+
+				<!-- Índice de valores (idea: shadcn studio about-us-page-08, en formato editorial) -->
+				<ol class="mt-16 border-t border-upc-ink/15">
+					{
+						VALUES.map((v, i) => (
+							<li
+								class="group relative isolate grid gap-2 overflow-hidden border-b border-upc-ink/15 py-6 sm:grid-cols-12 sm:items-baseline sm:gap-6 sm:py-8"
+								data-reveal
+								style={`--reveal-delay:${(i % 4) * 60}ms`}
+							>
+								<span
+									aria-hidden="true"
+									class="absolute inset-0 -z-10 origin-left scale-x-0 bg-upc-red transition-transform duration-500 ease-out group-hover:scale-x-100 motion-reduce:transition-none"
+								/>
+								<span class="font-display text-lg italic tabular-nums text-upc-red transition-colors duration-300 group-hover:text-white/80 sm:col-span-1 sm:pl-4">
+									{pad(i + 1)}
+								</span>
+								<h3 class="font-display text-3xl font-semibold transition-[color,transform] duration-300 group-hover:translate-x-2 group-hover:text-white sm:col-span-4 sm:text-4xl">
+									{v.name}
+								</h3>
+								<p class="text-base leading-relaxed text-upc-body transition-colors duration-300 group-hover:text-white/90 sm:col-span-7 sm:pr-4">
+									{v.text}
+								</p>
+							</li>
+						))
+					}
+				</ol>
+			</div>
+		</section>
+
+		<!-- ============================ 05 · DIRECTORIO ============================ -->
+		<section id="directorio" aria-labelledby="directorio-title" class="scroll-mt-36 border-t border-upc-ink/10 bg-upc-surface py-20 sm:py-28">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div class="mb-12 grid gap-8 lg:grid-cols-12">
+					<div class="lg:col-span-7">
+						<p class="text-xs font-bold uppercase tracking-[0.3em] text-upc-red" data-reveal>05 — Directorio</p>
+						<h2 id="directorio-title" class="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl" data-reveal>
+							¿Con quién <em class="font-medium text-upc-red">hablamos?</em>
+						</h2>
+					</div>
+					<div class="self-end lg:col-span-5" data-reveal>
+						<p class="text-lg text-upc-body">Marca al conmutador y pide la extensión del área.</p>
+						<a
+							href={`tel:${SWITCHBOARD.tel}`}
+							class="mt-2 inline-flex items-center gap-2 rounded font-display text-3xl text-upc-ink hover:text-upc-red focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-upc-red"
+						>
+							<Phone className="h-6 w-6 text-upc-red" aria-hidden="true" />
+							{SWITCHBOARD.label}
+						</a>
+					</div>
+				</div>
+				<Directory client:visible />
+			</div>
+		</section>
+
+		<!-- ============================ 06 · CONTACTO ============================ -->
+		<section id="contacto" aria-labelledby="contacto-title" class="scroll-mt-36 bg-upc-dark py-20 text-white sm:py-28">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<p class="text-xs font-bold uppercase tracking-[0.3em] text-upc-red-on-dark" data-reveal>06 — Contacto</p>
+				<h2 id="contacto-title" class="mt-4 font-display text-[clamp(3rem,8vw,7rem)] font-bold leading-[0.95] tracking-tight" data-reveal>
+					Escríbenos, <em class="font-medium text-upc-red-on-dark">te leemos.</em>
+				</h2>
+				<a
+					href={`mailto:${CONTACT.email}`}
+					class="group mt-10 inline-block rounded font-display text-2xl text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:text-4xl lg:text-5xl"
+					data-reveal
+				>
+					<span class="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_2px] bg-left-bottom bg-no-repeat pb-1 transition-[background-size] duration-500 group-hover:bg-[length:100%_2px]">
+						{CONTACT.email}
+					</span>
+					<ArrowUpRight className="ml-2 inline h-8 w-8 text-upc-red-on-dark transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" />
+				</a>
+
+				<div class="mt-16 grid gap-10 border-t border-white/15 pt-10 lg:grid-cols-12">
+					<dl class="space-y-8 lg:col-span-5">
+						<div data-reveal>
+							<dt class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] text-white/60">
+								<MapPin className="h-4 w-4 text-upc-red-on-dark" aria-hidden="true" /> Dirección
+							</dt>
+							<dd class="mt-2 text-lg leading-relaxed text-white/90">{CONTACT.address}</dd>
+							<dd class="mt-2">
+								<a
+									href={CONTACT.mapLink}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="inline-flex items-center gap-1 rounded text-sm font-semibold text-upc-red-on-dark hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+								>
+									Cómo llegar <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+								</a>
+							</dd>
+						</div>
+						<div data-reveal>
+							<dt class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] text-white/60">
+								<Phone className="h-4 w-4 text-upc-red-on-dark" aria-hidden="true" /> Conmutador
+							</dt>
+							<dd class="mt-2">
+								<a href={`tel:${SWITCHBOARD.tel}`} class="rounded text-lg text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+									{SWITCHBOARD.label}
+								</a>
+							</dd>
+						</div>
+						<div data-reveal>
+							<dt class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] text-white/60">
+								<Clock className="h-4 w-4 text-upc-red-on-dark" aria-hidden="true" /> Horario
+							</dt>
+							<dd class="mt-2 text-lg text-white/90">{CONTACT.schedule}</dd>
+						</div>
+					</dl>
+					<div class="overflow-hidden rounded-tl-[4rem] border border-white/10 lg:col-span-7" data-reveal>
+						<iframe
+							src={CONTACT.mapEmbed}
+							title="Mapa de ubicación de la Universidad Politécnica del Centro"
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"
+							class="h-80 w-full grayscale-[60%] lg:h-full lg:min-h-[22rem]"
+						></iframe>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</BaseLayout>
+
+<script>
+	// Revelado al hacer scroll y línea de tiempo que se dibuja con el scroll.
+	// Se re-inicializa en cada carga porque el sitio navega con View Transitions.
+	let cleanup: (() => void) | undefined;
+
+	const init = () => {
+		cleanup?.();
+		const targets = document.querySelectorAll<HTMLElement>("[data-reveal]");
+		if (targets.length === 0) return;
+		document.documentElement.classList.add("reveal-ready");
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("is-visible");
+						observer.unobserve(entry.target);
+					}
+				}
+			},
+			{ rootMargin: "0px 0px -12% 0px" },
+		);
+		targets.forEach((t) => observer.observe(t));
+
+		const timeline = document.getElementById("timeline");
+		let frame = 0;
+		const onScroll = () => {
+			cancelAnimationFrame(frame);
+			frame = requestAnimationFrame(() => {
+				if (!timeline) return;
+				const rect = timeline.getBoundingClientRect();
+				const anchor = window.innerHeight * 0.6;
+				const progress = Math.min(1, Math.max(0, (anchor - rect.top) / rect.height));
+				timeline.style.setProperty("--tl-progress", progress.toFixed(3));
+			});
+		};
+		onScroll();
+		window.addEventListener("scroll", onScroll, { passive: true });
+
+		cleanup = () => {
+			observer.disconnect();
+			cancelAnimationFrame(frame);
+			window.removeEventListener("scroll", onScroll);
+			document.documentElement.classList.remove("reveal-ready");
+		};
+	};
+
+	document.addEventListener("astro:page-load", init);
+	document.addEventListener("astro:before-swap", () => cleanup?.());
+</script>

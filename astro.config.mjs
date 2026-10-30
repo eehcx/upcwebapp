@@ -8,6 +8,11 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   output: "server", // porque usas SSR
+  // Bienvenida y Antecedentes se reemplazaron por /conocenos
+  redirects: {
+    "/bienvenida": "/conocenos#mensaje",
+    "/antecedentes": "/conocenos#historia",
+  },
   adapter: vercel(),
   integrations: [
     tailwind({
