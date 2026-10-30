@@ -14,6 +14,7 @@ import { Image } from "astro:assets";
 
 import {MainCarousel} from "@/features/home";
 import BlogCard from "@/features/boletines/presentation/components/BlogCard.astro";
+import { HeroCareers } from "@/features/home/HeroCareers";
 import LinkButton from "@/features/home/LinkButton.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
@@ -21,64 +22,24 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import {homeCarousel} from "@/shared/data";
 
 const degrees = await getCollection("degrees");
+const degreeItems = degrees.map(({ slug, data }) => ({
+	slug,
+	title: data.title,
+	subtitle: data.subtitle,
+	description: data.description,
+	duration: data.duration,
+	modality: data.modality,
+	image: data.image,
+	pdf: data.pdf,
+}));
 
 export const prerender = true;
 ---
 
 <BaseLayout>
 	<main class="bg-neutral-50">
-		<MainCarousel client:load images={homeCarousel} />
-
-		<section
-			id="carreras"
-			class="h-full w-full py-1"
-			aria-label="Nuestras carreras destacadas"
-		>
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-1 h-full w-full"
-			>
-				{
-					degrees
-						.map((item) => {
-							const { slug, data } = item;
-							const {
-								title,
-								subtitle,
-								description,
-								duration,
-								modality,
-								image,
-								pdf,
-							} = data;
-
-							return (
-								<a
-									href={`carreras/${slug}`}
-									class="relative flex justify-center w-full"
-									title={title}
-								>
-									<div class="relative w-full">
-										<img
-											transition:name={`img-${slug}`}
-											src={`/images/${image}`}
-											class="select-none transition-transform duration-300 transform w-full h-auto md:h-[160px] object-cover"
-											alt={title}
-											draggable="false"
-											loading="lazy"
-										/>
-										<div class="absolute inset-0 bg-red-600/70 hover:bg-red-600/10 flex items-center justify-center transition-opacity duration-200 opacity-100 hover:opacity-0">
-											<h4 class="text-white text-lg font-semibold text-center px-2">
-												{subtitle}
-											</h4>
-										</div>
-									</div>
-								</a>
-							);
-						})
-						.sort()
-				}
-			</div>
-		</section>
+		<HeroCareers client:load degrees={degreeItems} />
+		<MainCarousel client:load degrees={degreeItems} />
 
 		<section id="educacion" class="py-16 sm:py-20">
 			<div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -191,7 +152,7 @@ export const prerender = true;
 						description="Este jueves 23 de enero, estudiantes de la UPC se sumaron al día de Papillón ¡Vuelve el Guardián! organizado por la Secretaría de Cultura del Estado, este homenaje al majestuoso *Crocodylus acutus*, icono del estado de Tabasco. "
 						authorName="Josué Darío Hernández"
 						authorRole="Dpto. de Difusión"
-						link="#"
+						link="/boletines/el-guardian-papillon-esta-de-vuelta"
 					/>
 					<BlogCard
 						date="Ene 17, 2025"
@@ -200,7 +161,7 @@ export const prerender = true;
 						description="La Universidad Politécnica del Centro firmó un convenio de colaboración con el Centro de Interpretación con la Naturaleza YUMKA ANP para que los #PapillonesRojos puedan realizar su servicio social en esta Área Natural Protegida de Tabasco. La firma de convenio estuvo a cargo del rector de la UPC, Mtro. José Luis Cortés Peñaloza y la M.C. Ana Victoria León Mendoza. "
 						authorName="Diana Laura Hernández"
 						authorRole="Dpto. de Difusión"
-						link="#"
+						link="/boletines/gran-alianza"
 					/>
 				</div>
 			</div>

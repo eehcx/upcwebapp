@@ -1,7 +1,7 @@
 ---
 title: Ingeniería en Mecánica Automotriz
 subtitle: Mecánica Automotriz
-description: Manejo, análisis, diseño implementación y evaluación de proyectos que requieran el uso de sistemas electrónicos y de telecomunicaciones.
+description: Diseña elementos y sistemas mecánicos, y ofrece soluciones, mejoras y mantenimiento a la industria automotriz, ferroviaria, médica y de servicios.
 duration: 3 años
 modality: Presencial
 image: mecanica.webp

@@ -1,5 +1,5 @@
 ---
-title: Ingenieria en Animación y Efectos Visuales
+title: Ingeniería en Animación y Efectos Visuales
 subtitle: Animación y Efectos Visuales
 description: Forma expertos en animación y efectos visuales con tecnología avanzada para la industria del entretenimiento.
 duration: 3 años
