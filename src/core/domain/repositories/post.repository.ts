@@ -1,13 +1,13 @@
-import type { PostDTO, PostListDTO } from "../entities";
-import type { DateRangeParams } from "@/shared/types";
+import type {
+    PostDTO,
+    PostFilters,
+    PostSummaryDTO,
+} from "../entities/post.ts";
+import type { PageResponse } from "@/shared/types";
 
 export interface PostRepository {
-    //getAll(): Promise<PostEntity[]>;
-    getPublished(): Promise<PostListDTO[]>;
-    //getById(id: number): Promise<PostEntity | null>;
+    getPosts(
+        filters?: PostFilters
+    ): Promise<PageResponse<PostSummaryDTO>>;
     getBySlug(slug: string): Promise<PostDTO>;
-    //getByAuthor(authorId: number): Promise<PostEntity[]>;
-    //getByCategory(categoryId: number): Promise<PostEntity[]>;
-    //getByStatus(status: string): Promise<PostEntity[]>;
-    getByDateRange(params: DateRangeParams): Promise<PostDTO[]>;
 }

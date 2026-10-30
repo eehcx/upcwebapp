@@ -11,6 +11,10 @@ export const metadata: Metadata = {
         title: 'Inicio',
         description: 'Bienvenido a la Universidad Politecnica del Centro',
     },
+    '/boletines': {
+        title: 'Boletines y sala de prensa',
+        description: 'Noticias, eventos, convocatorias y comunicados de la Universidad Politécnica del Centro',
+    },
     '/academico': {
         title: 'Académico',
         description: 'Conoce nuestras oportunidades academicas',

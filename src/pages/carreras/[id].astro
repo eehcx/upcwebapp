@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import DegreesLayout from "@/layouts/DegreesLayout.astro";
 import InformationCarousel from "@/features/carreras/InformationCarousel";
 import PDFViewer from "@/components/common/PDFViewer.astro";
+import StudyPlan from "@/features/carreras/StudyPlan.astro";
 
 import {
     Breadcrumb,
@@ -26,7 +27,11 @@ const dataInfo = await getCollection("information");
 
 const { degree } = Astro.props;
 const { data, slug } = degree;
-const { title, subtitle, description, duration, modality, image, pdf } = data;
+const { title, subtitle, description, duration, modality, image, pdf, studyPlan } = data;
+const informationItems = dataInfo.map((item) => ({
+    data: { title: item.data.title },
+    body: studyPlan && item.slug === "plan-estudios" ? studyPlan.summary : item.body,
+}));
 
 const { Content } = await render(degree);
 
@@ -88,7 +93,7 @@ export const prerender = true;
                 </div>
 
                 <div class="lg:w-3/5 w-full p-5">
-                <InformationCarousel client:load items={dataInfo} />
+                <InformationCarousel client:load items={informationItems} />
                 </div>
             </article>
 
@@ -97,6 +102,7 @@ export const prerender = true;
             >
                 <Content />
             </div>
+            {studyPlan && <StudyPlan plan={studyPlan} duration={duration} pdf={pdf} />}
         </section>
     </main>
 </DegreesLayout>

@@ -1,3 +1,13 @@
+import typografy from '@tailwindcss/typography';
+import animate from "tailwindcss-animate";
+
+// Los colores upc-* usan variables CSS; como función aceptan modificadores de opacidad (bg-upc-red/90)
+// Sin modificador Tailwind pasa var(--tw-*-opacity): ahí se devuelve el color tal cual.
+const upc = (value) => ({ opacityValue }) =>
+	opacityValue === undefined || String(opacityValue).startsWith("var(--tw-")
+		? value
+		: `color-mix(in srgb, ${value} calc(${opacityValue} * 100%), transparent)`;
+
 /** @type {import('tailwindcss').Config} */
 export default {
     darkMode: ['class'],
@@ -5,7 +15,8 @@ export default {
 	theme: {
     	extend: {
 			fontFamily: {
-				'Futura': ['Futura', 'sans-serif'],  
+				'Futura': ['Futura', 'sans-serif'],
+				display: ['"Playfair Display"', 'Georgia', 'serif'],
 			},
 			fontWeight: {
 				thin: 100,
@@ -60,6 +71,24 @@ export default {
     				'3': 'hsl(var(--chart-3))',
     				'4': 'hsl(var(--chart-4))',
     				'5': 'hsl(var(--chart-5))'
+    			},
+    			upc: {
+    				red: upc('var(--brand-red, #C12329)'),
+    				'red-hover': upc('var(--brand-red-hover, #9E1B20)'),
+    				'red-soft': upc('var(--brand-red-soft, #FDF2F2)'),
+    				'red-border': upc('var(--brand-red-border, #F5C2C4)'),
+    				'red-on-dark': upc('var(--brand-red-on-dark, #F87171)'),
+    				ink: upc('var(--text-primary, #221E20)'),
+    				body: upc('var(--text-secondary, #52525B)'),
+    				stone: upc('var(--text-muted, #767574)'),
+    				slate: upc('var(--text-motto, #838587)'),
+    				canvas: upc('var(--bg-canvas, #F8F8F9)'),
+    				surface: upc('var(--bg-surface, #FFFFFF)'),
+    				muted: upc('var(--bg-muted, #EFEFF1)'),
+    				border: upc('var(--border-subtle, #E2E2E6)'),
+    				dark: upc('var(--surface-dark, #242428)'),
+    				'dark-elevated': upc('var(--surface-dark-elevated, #34343A)'),
+    				steel: upc('var(--accent-steel, #276D8E)')
     			}
     		},
     		keyframes: {
@@ -87,7 +116,7 @@ export default {
     	}
     },
 	plugins: [
-		require('@tailwindcss/typography'),
-		require("tailwindcss-animate")
+		typografy,
+		animate
 	],
 }

@@ -1,0 +1,19 @@
+---
+interface BoletinCoverProps {
+    src: string;
+    alt?: string;
+}
+
+const { src, alt = "" } = Astro.props as BoletinCoverProps;
+---
+
+<figure class="mt-10 sm:mt-12">
+    <img
+        src={src}
+        alt={alt}
+        width="1800"
+        height="1000"
+        fetchpriority="high"
+        class="w-full aspect-[4/3] sm:aspect-[2/1] object-cover bg-neutral-100"
+    />
+</figure>

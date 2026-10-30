@@ -1,0 +1,43 @@
+---
+import type { BoletinSummaryDTO } from "@/features/boletines/entity";
+import BlogCard from "@/features/boletines/presentation/components/BlogCard.astro";
+
+interface BoletinesGridProps {
+    items: BoletinSummaryDTO[];
+    columns?: 2 | 3;
+    basePath?: string;
+    emptyMessage?: string;
+}
+
+const {
+    items,
+    columns = 3,
+    basePath = "/boletines",
+    emptyMessage = "Aún no hay boletines publicados."
+} = Astro.props as BoletinesGridProps;
+
+const formatDate = (date: Date): string =>
+    date.toLocaleDateString("es-MX", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+    });
+
+const gridClass = `grid gap-8 sm:grid-cols-2 ${columns === 3 ? "lg:grid-cols-3" : ""}`;
+---
+
+{items.length === 0 ? (
+    <p class="text-neutral-600">{emptyMessage}</p>
+) : (
+    <div class={gridClass}>
+        {items.map((item) => (
+            <BlogCard
+                date={formatDate(item.publishedAt ?? item.createdAt)}
+                title={item.title}
+                description={item.excerpt}
+                authorName={item.authorName}
+                link={`${basePath}/${item.slug}`}
+            />
+        ))}
+    </div>
+)}

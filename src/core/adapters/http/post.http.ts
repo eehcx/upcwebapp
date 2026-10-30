@@ -1,26 +1,28 @@
+import type { PostRepository } from "@/core/domain/repositories";
 import type {
-    PostRepository,     // Repository
-    PostDTO,            // Entity
-    PostListDTO
-} from "@/core/domain";
-import type { DateRangeParams } from "@/shared/types";
-import { mapPostDTO } from "./mappers";
+    PostDTO,
+    PostFilters,
+    PostSummaryDTO,
+} from "@/core/domain/entities/post.ts";
+import type { PageResponse } from "@/shared/types";
 import { httpGet } from "@/shared/lib";
+import { mapPostDTO, mapPostSummaryDTO } from "./mappers";
 
 export class PostHttpRepository implements PostRepository {
-
-    async getPublished(): Promise<PostListDTO[]> {
-        const data = await httpGet<{ content: PostListDTO[] }>("/posts/published");
-        return data.content;
+    async getPosts(
+        filters?: PostFilters
+    ): Promise<PageResponse<PostSummaryDTO>> {
+        const data = await httpGet<PageResponse<any>>("/posts", filters);
+        return {
+            ...data,
+            content: (data.content ?? []).map(mapPostSummaryDTO),
+        };
     }
 
     async getBySlug(slug: string): Promise<PostDTO> {
-        const data = await httpGet<any>(`/posts/slug/${slug}`);
+        const data = await httpGet<any>(
+            `/posts/slug/${encodeURIComponent(slug)}`
+        );
         return mapPostDTO(data);
-    }
-
-    async getByDateRange(params: DateRangeParams): Promise<PostDTO[]> {
-        const data = await httpGet<any[]>(`/posts/date-range`, params);
-        return data.map(mapPostDTO);
     }
 }

@@ -1,0 +1,26 @@
+---
+import type { BoletinTocItem } from "@/features/boletines/service";
+
+interface BoletinTableOfContentsProps {
+    items: BoletinTocItem[];
+    title?: string;
+}
+
+const { items, title = "En este boletín" } = Astro.props as BoletinTableOfContentsProps;
+
+const ordinal = (index: number): string => String(index + 1).padStart(2, "0");
+---
+
+<nav aria-label="Contenido del artículo" class="border-t-2 border-neutral-900 pt-5">
+    <h2 class="text-sm font-semibold text-neutral-900">{title}</h2>
+    <ol class="mt-5 space-y-4 text-sm leading-6 text-neutral-600">
+        {items.map((item, index) => (
+            <li>
+                <a href={`#${item.id}`} class="flex gap-3 hover:text-red-600">
+                    <span aria-hidden="true" class="text-red-600">{ordinal(index)}</span>
+                    {item.title}
+                </a>
+            </li>
+        ))}
+    </ol>
+</nav>
