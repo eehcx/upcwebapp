@@ -1,14 +1,14 @@
 import {
-    // Use cases - Posts
-    GetPublishedPostsUseCase,
-    GetPostsByDateRangeUseCase,
+    GetPostsUseCase,
     GetPostsBySlugUseCase,
-    // Entities
-    type PostDTO,
-    type PostListDTO
-} from "@/core/domain";
+} from "@/core/domain/use-cases/posts";
 import { PostHttpRepository } from "@/core/adapters";
-import type { DateRangeParams } from "@/shared/types";
+import type {
+    PostDTO,
+    PostFilters,
+    PostSummaryDTO,
+} from "@/core/domain/entities/post.ts";
+import type { PageResponse } from "@/shared/types";
 
 export class PostService {
     private readonly repo: PostHttpRepository;
@@ -17,22 +17,15 @@ export class PostService {
         this.repo = new PostHttpRepository();
     }
 
-    async getPublishedPosts(): Promise<PostListDTO[]> {
-        const useCase = new GetPublishedPostsUseCase(this.repo);
-        return useCase.execute();
+    async getPosts(
+        filters?: PostFilters
+    ): Promise<PageResponse<PostSummaryDTO>> {
+        const useCase = new GetPostsUseCase(this.repo);
+        return useCase.execute(filters);
     }
 
     async getPostBySlug(slug: string): Promise<PostDTO> {
         const useCase = new GetPostsBySlugUseCase(this.repo);
         return useCase.execute(slug);
-    }
-
-    async getPostsByDateRange(start: string, end: string): Promise<PostDTO[]> {
-        const useCase = new GetPostsByDateRangeUseCase(this.repo);
-        const params : DateRangeParams = {
-            startDate: start,
-            endDate: end
-        }
-        return useCase.execute(params);
     }
 }

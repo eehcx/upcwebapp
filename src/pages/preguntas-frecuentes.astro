@@ -1,0 +1,33 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { FaqSection } from "@/features/faq/FaqSection";
+import { FAQ_CATEGORIES } from "@/features/faq/faq.data";
+
+export const prerender = true;
+
+// Datos estructurados FAQPage para buscadores
+const faqJsonLd = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: FAQ_CATEGORIES.flatMap((c) =>
+		c.items.map((item) => ({
+			"@type": "Question",
+			name: item.question,
+			acceptedAnswer: {
+				"@type": "Answer",
+				text: [...item.answer, ...(item.list ?? [])].join(" "),
+			},
+		})),
+	),
+};
+---
+
+<BaseLayout
+	title="Preguntas frecuentes"
+	description="Respuestas sobre admisión, requisitos, trámites escolares, carreras y estadías en la Universidad Politécnica del Centro (UPC), Tabasco."
+>
+	<main>
+		<FaqSection client:load />
+	</main>
+	<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+</BaseLayout>

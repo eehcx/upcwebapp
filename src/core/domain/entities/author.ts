@@ -1,11 +1,11 @@
 export interface AuthorDTO {
     idPerson: number;
-    name: string
+    name: string;
     firstLastname: string;
-    secondLastname: string;
+    secondLastname: string | null;
     fullName: string;
-    position: string;
-    email: string;
-    profilePhoto: string;
-    bio: string;
+    position: string | null;
+    email: string | null;
+    profilePhoto: string | null;
+    bio: string | null;
 }

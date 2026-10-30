@@ -1,3 +1,4 @@
+import { resolveApiAsset } from "@/shared/lib";
 import type {
     BoletinAuthorDTO,
     BoletinCategoryDTO,
@@ -16,7 +17,7 @@ function mapAuthor(raw: any): BoletinAuthorDTO | null {
         fullName: raw.fullName ?? "",
         position: raw.position ?? "",
         email: raw.email ?? "",
-        profilePhoto: raw.profilePhoto ?? "",
+        profilePhoto: resolveApiAsset(raw.profilePhoto) ?? "",
         bio: raw.bio ?? ""
     };
 }
@@ -32,15 +33,19 @@ function mapCategory(raw: any): BoletinCategoryDTO | null {
 }
 
 export function mapBoletin(raw: any): BoletinDTO {
+    const rawCategory = Array.isArray(raw.categories)
+        ? raw.categories[0]
+        : (raw.category ?? raw.categories);
+
     return {
-        id: raw.id,
+        id: raw.idPost ?? raw.id,
         title: raw.title,
         slug: raw.slug,
         content: raw.content ?? "",
         excerpt: raw.excerpt ?? raw.summary ?? "",
         author: mapAuthor(raw.author),
-        categories: mapCategory(raw.category ?? raw.categories),
-        coverUrl: raw.coverUrl ?? null,
+        categories: mapCategory(rawCategory),
+        coverUrl: resolveApiAsset(raw.coverUrl),
         isActive: raw.isActive ?? true,
         status: raw.status,
         createdAt: new Date(raw.createdAt),
@@ -56,7 +61,7 @@ export function mapBoletinSummary(raw: any): BoletinSummaryDTO {
         excerpt: raw.excerpt ?? "",
         authorName: raw.authorName ?? "",
         authorEmail: raw.authorEmail ?? "",
-        coverUrl: raw.coverUrl ?? null,
+        coverUrl: resolveApiAsset(raw.coverUrl),
         categoryCount: raw.categoryCount ?? 0,
         isActive: raw.isActive ?? true,
         status: raw.status,

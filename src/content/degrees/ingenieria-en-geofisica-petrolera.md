@@ -1,14 +1,14 @@
 ---
-title: Ingenieria en Geofisica Petrolera
-subtitle: Geofisica Petrolera
-description: Manejo, análisis, diseño implementación y evaluación de proyectos que requieran el uso de sistemas electrónicos y de telecomunicaciones.
+title: Ingeniería en Geofísica Petrolera
+subtitle: Geofísica Petrolera
+description: Estudia los campos físicos terrestres para explorar, identificar y evaluar recursos energéticos del subsuelo.
 duration: 3 años
 modality: Presencial
 image: geofisica.webp
 pdf: Geofisica_Petrolera.pdf
 ---
 
-## ¿Que es la ingeniería en Geofisica Petrolera?
+## ¿Que es la ingeniería en Geofísica Petrolera?
 
 La Ingeniería en Geofísica Petrolera es la rama común de la Física y Geología de Exploración
 que estudia los campos físicos terrestres para investigar indirectamente el subsuelo. Esto
