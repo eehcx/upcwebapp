@@ -8,6 +8,12 @@ import Footer from "@/components/layout/Footer.astro";
 import BaseHead from "@/components/common/BaseHead.astro";
 import TopAlert from "@/components/layout/TopAlert.astro";
 
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title, description } = Astro.props as Props;
 const currentPath = Astro.url.pathname;
 const pageMetadata = metadata[currentPath] || {};
 
@@ -47,7 +53,10 @@ try {
 <!doctype html>
 <html lang="es-MX">
 	<head>
-		<BaseHead {...pageMetadata} />
+		<BaseHead
+			title={title || pageMetadata.title}
+			description={description || pageMetadata.description}
+		/>
 	</head>
 	<body class="overflow-x-hidden">
 		<!-- Siempre muestra el TopAlert, con contenido condicional -->

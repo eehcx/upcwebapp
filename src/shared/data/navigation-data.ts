@@ -5,11 +5,15 @@ export const navigation = [
     { 
         name: "Conócenos", 
         submenu: [
-            { name: "Bienvenida", href: "/bienvenida" },
-            { name: "Antecedentes", href: "/antecedentes" },
+            { name: "Mensaje del rector", href: "/conocenos#mensaje" },
+            { name: "Historia", href: "/conocenos#historia" },
+            { name: "Misión, visión y valores", href: "/conocenos#mision-vision" },
+            { name: "Directorio", href: "/conocenos#directorio" },
+            { name: "Preguntas frecuentes", href: "/preguntas-frecuentes" },
         ]
     },
     { name: "Vinculación", href: "/vinculacion" },
+    { name: "Boletines", href: "/boletines" },
     { name: "Admisión", href: "/admision" },
     { 
         name: "Normatividad", 
