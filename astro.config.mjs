@@ -1,7 +1,7 @@
 import path from 'path'
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import vercel from "@astrojs/vercel/serverless";
+import cloudflare from '@astrojs/cloudflare';
 
 import react from '@astrojs/react';
 
@@ -13,7 +13,7 @@ export default defineConfig({
     "/bienvenida": "/conocenos#mensaje",
     "/antecedentes": "/conocenos#historia",
   },
-  adapter: vercel(),
+  adapter: cloudflare(),
   integrations: [
     tailwind({
       applyBaseStyles: false,
