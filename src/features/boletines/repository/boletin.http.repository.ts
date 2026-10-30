@@ -6,7 +6,7 @@ import { mapBoletin, mapBoletinSummary } from "./boletin.mapper";
 export class BoletinHttpRepository implements BoletinRepository {
 
     async getPublished(): Promise<BoletinSummaryDTO[]> {
-        const data = await httpGet<{ content: any[] }>("/posts/published");
+        const data = await httpGet<{ content: any[] }>("/posts");
         return (data.content ?? []).map(mapBoletinSummary);
     }
 
