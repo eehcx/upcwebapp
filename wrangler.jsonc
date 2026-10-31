@@ -1,7 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "upcwebapp",
-  "account_id": "7e31adc4db12273c4be331916ec43b13",
   "compatibility_date": "2026-01-14",
   "compatibility_flags": ["nodejs_compat"],
   "pages_build_output_dir": "./dist"
